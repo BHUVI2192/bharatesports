@@ -152,7 +152,7 @@ const ContactSection = () => {
                   </a>
 
                   <a 
-                    href="mailto:info@bharatesportexpress.com" 
+                    href="mailto:bharatesports.bgmi@gmail.com" 
                     className="flex items-center p-4 bg-navy-900 rounded-lg border border-navy-700 hover:border-blue-500 transition-all duration-300"
                   >
                     <div className="p-2 rounded-full bg-blue-500/20">
@@ -160,7 +160,7 @@ const ContactSection = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-medium text-white">Email</h4>
-                      <p className="text-gray-400">info@bharatesportexpress.com</p>
+                      <p className="text-gray-400">bharatesports.bgmi@gmail.com</p>
                     </div>
                   </a>
                 </div>

@@ -1,7 +1,5 @@
 
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -10,8 +8,8 @@ const Hero = () => {
       
       <div className="container-custom pt-24 pb-16 relative z-10">
         <div className="text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-            <div className="flex justify-center md:justify-start">
+          <div className="space-y-6 flex flex-col items-center md:items-start">
+            <div>
               <img 
                 src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
                 alt="Bharat Esport Express Logo" 
@@ -27,15 +25,6 @@ const Hero = () => {
             <p className="text-lg text-gray-300 max-w-lg mx-auto md:mx-0">
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white font-medium text-lg px-8 py-6 h-auto shadow-button">
-                Join Now
-              </Button>
-              <Button variant="outline" className="border-blue-500 text-blue-500 hover:bg-blue-500/10 font-medium text-lg px-8 py-6 h-auto">
-                Explore Games <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </div>
           </div>
           
           <div className="relative animate-fade-in">

@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const newsArticles = [
   {
@@ -50,11 +51,46 @@ const newsArticles = [
   }
 ];
 
+const popularSearches = [
+  "BGMI Tournaments", 
+  "Esports Scholarships", 
+  "Gaming Laptops", 
+  "PC Components", 
+  "Mobile Gaming"
+];
+
 const NewsSection = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredNews, setFilteredNews] = useState(newsArticles);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    
+    if (query.trim() === '') {
+      setFilteredNews(newsArticles);
+    } else {
+      const filtered = newsArticles.filter(article => 
+        article.title.toLowerCase().includes(query.toLowerCase()) || 
+        article.excerpt.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredNews(filtered);
+    }
+  };
+
+  const handlePopularSearch = (term: string) => {
+    setSearchQuery(term);
+    const filtered = newsArticles.filter(article => 
+      article.title.toLowerCase().includes(term.toLowerCase()) || 
+      article.excerpt.toLowerCase().includes(term.toLowerCase())
+    );
+    setFilteredNews(filtered);
+  };
+  
   return (
     <section id="news" className="section-padding bg-navy-950">
       <div className="container-custom">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-white">LATEST</span>{" "}
             <span className="text-blue-500">NEWS</span>
@@ -63,9 +99,35 @@ const NewsSection = () => {
             Stay updated with the latest developments, tournaments, and announcements from the world of esports
           </p>
         </div>
+
+        <div className="mb-10 max-w-xl mx-auto">
+          <div className="relative">
+            <Input
+              type="text"
+              placeholder="Search news..."
+              value={searchQuery}
+              onChange={handleSearch}
+              className="bg-navy-900 border-navy-700 pl-10 focus:border-blue-500"
+            />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          </div>
+          
+          <div className="mt-4 flex flex-wrap gap-2 justify-center">
+            <span className="text-sm text-gray-400">Popular searches:</span>
+            {popularSearches.map(term => (
+              <button
+                key={term}
+                onClick={() => handlePopularSearch(term)}
+                className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              >
+                {term}
+              </button>
+            ))}
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {newsArticles.map((article) => (
+          {filteredNews.map((article) => (
             <div key={article.id} className="group">
               <Card className="h-full bg-navy-800 border border-navy-700 overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-soft">
                 <div className="h-48 bg-navy-700 relative overflow-hidden">
@@ -110,6 +172,12 @@ const NewsSection = () => {
             </div>
           ))}
         </div>
+        
+        {filteredNews.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-400">No news articles found matching your search.</p>
+          </div>
+        )}
         
         <div className="text-center mt-12">
           <Button 

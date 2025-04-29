@@ -1,6 +1,8 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 // Game card component
 const GameCard = ({ title, category }: { title: string; category: string }) => {
@@ -36,20 +38,21 @@ const FeaturedGames = () => {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="text-blue-500">Featured</span>{" "}
-              <span className="text-white">Games</span>
+              <span className="text-white">News</span>
             </h2>
             <p className="text-gray-400 max-w-2xl">
-              Discover the most exciting titles in our catalog, from
-              heart-pounding racing to mind-bending puzzles.
+              Stay updated with the latest developments, tournaments, and announcements from the world of esports
             </p>
           </div>
-          <Button className="mt-4 md:mt-0 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10">
-            View All Games
+          <Button asChild className="mt-4 md:mt-0 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10">
+            <Link to="#news">
+              View All News <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
-          {games.map((game) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          {games.slice(0, 3).map((game) => (
             <GameCard
               key={game.id}
               title={game.title}

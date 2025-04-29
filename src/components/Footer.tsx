@@ -3,54 +3,59 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-cyber-darker py-12 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cyber-grid bg-[size:30px_30px] opacity-10"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <footer className="bg-navy-900 py-12 relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
+      <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="font-pixel text-2xl font-bold mb-4">
-              <span className="text-neon-pink">NEON</span>
-              <span className="text-neon-blue">ARENA</span>
-            </h2>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
+                alt="Bharat Esport Express Logo" 
+                className="w-12 h-12 mr-2"
+              />
+              <h2 className="text-2xl font-bold text-white">
+                Bharat Esport Express
+              </h2>
+            </div>
             <p className="text-gray-400 max-w-md">
-              The ultimate destination for cyberpunk gaming experiences. Immerse
-              yourself in neon-drenched worlds and compete in thrilling challenges.
+              India's premier gaming community, dedicated to elevating the esports ecosystem through tournaments, content creation, and professional player development.
             </p>
           </div>
 
           <div>
-            <h3 className="text-neon-blue text-lg font-cyber font-semibold mb-4">
+            <h3 className="text-blue-500 text-lg font-semibold mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#"
-                  className="text-gray-400 hover:text-neon-blue transition-colors"
+                  className="text-gray-400 hover:text-blue-500 transition-colors"
                 >
                   Home
                 </a>
               </li>
               <li>
                 <a
-                  href="#games"
-                  className="text-gray-400 hover:text-neon-pink transition-colors"
-                >
-                  Games
-                </a>
-              </li>
-              <li>
-                <a
                   href="#news"
-                  className="text-gray-400 hover:text-neon-green transition-colors"
+                  className="text-gray-400 hover:text-blue-500 transition-colors"
                 >
                   News
                 </a>
               </li>
               <li>
                 <a
+                  href="#accessories"
+                  className="text-gray-400 hover:text-blue-500 transition-colors"
+                >
+                  Accessories
+                </a>
+              </li>
+              <li>
+                <a
                   href="#about"
-                  className="text-gray-400 hover:text-neon-yellow transition-colors"
+                  className="text-gray-400 hover:text-blue-500 transition-colors"
                 >
                   About
                 </a>
@@ -59,19 +64,19 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-neon-pink text-lg font-cyber font-semibold mb-4">
+            <h3 className="text-blue-500 text-lg font-semibold mb-4">
               Contact
             </h3>
             <ul className="space-y-2">
               <li className="text-gray-400">
-                <span className="text-neon-blue">Email:</span> info@neonarena.com
+                <span className="text-blue-400">Email:</span> bharatesports.bgmi@gmail.com
               </li>
               <li className="text-gray-400">
-                <span className="text-neon-pink">Support:</span>{" "}
-                support@neonarena.com
+                <span className="text-blue-400">Instagram:</span>{" "}
+                @bharat_esp0rts
               </li>
               <li className="text-gray-400">
-                <span className="text-neon-green">Press:</span> press@neonarena.com
+                <span className="text-blue-400">YouTube:</span> Bharat Esports Xpress
               </li>
             </ul>
           </div>
@@ -79,17 +84,14 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            &copy; 2025 Neon Arena. All rights reserved.
+            &copy; 2025 Bharat Esport Express. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-neon-blue transition-colors">
+            <a href="#" className="text-gray-400 hover:text-blue-500 transition-colors">
               Terms
             </a>
-            <a href="#" className="text-gray-400 hover:text-neon-pink transition-colors">
+            <a href="#" className="text-gray-400 hover:text-blue-500 transition-colors">
               Privacy
-            </a>
-            <a href="#" className="text-gray-400 hover:text-neon-green transition-colors">
-              Cookies
             </a>
           </div>
         </div>
