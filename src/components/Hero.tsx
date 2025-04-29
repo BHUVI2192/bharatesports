@@ -26,23 +26,6 @@ const Hero = () => {
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
           </div>
-          
-          <div className="relative animate-fade-in">
-            <div className="bg-navy-800 rounded-lg overflow-hidden aspect-video relative shadow-soft border border-navy-700">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-navy-900/80"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <span className="text-blue-400 text-sm uppercase font-medium tracking-wider">Featured</span>
-                <h3 className="text-white text-xl font-bold mt-1">Competitive Gameplay</h3>
-              </div>
-              <div className="bg-navy-800 w-full h-full flex items-center justify-center">
-                <div className="p-4 rounded-full bg-blue-500/20">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

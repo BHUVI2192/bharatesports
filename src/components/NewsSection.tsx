@@ -5,8 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { ArrowRight, Calendar, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { 
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious
+} from "@/components/ui/pagination";
 
-const newsArticles = [
+// Extended news articles array with more items for archive
+const allNewsArticles = [
   {
     id: '1',
     title: 'Bharat Esport Express Announces Major National Tournament',
@@ -48,6 +57,49 @@ const newsArticles = [
     excerpt: 'Upcoming tournament series aims to discover untapped gaming talent in smaller cities and rural areas.',
     date: 'April 1, 2025',
     image: 'mobile-gaming.jpg'
+  },
+  // Archive articles
+  {
+    id: '7',
+    title: 'Bharat Esport Express Partners with Major Telecom Provider',
+    excerpt: 'New partnership aims to improve gaming infrastructure and reduce latency for competitive players across India.',
+    date: 'March 25, 2025',
+    image: 'partnership.jpg'
+  },
+  {
+    id: '8',
+    title: 'College Esports Championship Concludes with Record Viewership',
+    excerpt: 'Over 500,000 viewers tuned in to watch the finals of the inter-college esports championship organized by Bharat Esport Express.',
+    date: 'March 20, 2025',
+    image: 'college-championship.jpg'
+  },
+  {
+    id: '9',
+    title: 'Bharat Esport Express Announces International Tournament Representation',
+    excerpt: 'Top teams from our national circuit will represent India at the upcoming Asian Games esports exhibition matches.',
+    date: 'March 15, 2025',
+    image: 'international.jpg'
+  },
+  {
+    id: '10',
+    title: 'New Training Program Launched for Aspiring Esports Athletes',
+    excerpt: 'Comprehensive coaching program includes mental conditioning, strategic gameplay, and physical fitness regimens.',
+    date: 'March 10, 2025',
+    image: 'training.jpg'
+  },
+  {
+    id: '11',
+    title: 'Bharat Esport Express Community Crosses One Million Members',
+    excerpt: 'Milestone celebration includes special events, giveaways, and exclusive tournaments for community members.',
+    date: 'March 5, 2025',
+    image: 'community.jpg'
+  },
+  {
+    id: '12',
+    title: 'Industry Leaders Join Bharat Esport Express Advisory Board',
+    excerpt: 'Veteran gaming executives and professional players join forces to guide the future of Indian esports development.',
+    date: 'March 1, 2025',
+    image: 'advisory-board.jpg'
   }
 ];
 
@@ -61,31 +113,48 @@ const popularSearches = [
 
 const NewsSection = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredNews, setFilteredNews] = useState(newsArticles);
+  const [filteredNews, setFilteredNews] = useState(allNewsArticles.slice(0, 6)); // Default to first 6 items
+  const [showAllNews, setShowAllNews] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchQuery(query);
     
     if (query.trim() === '') {
-      setFilteredNews(newsArticles);
+      setFilteredNews(showAllNews ? allNewsArticles : allNewsArticles.slice(0, 6));
     } else {
-      const filtered = newsArticles.filter(article => 
+      const filtered = allNewsArticles.filter(article => 
         article.title.toLowerCase().includes(query.toLowerCase()) || 
         article.excerpt.toLowerCase().includes(query.toLowerCase())
       );
       setFilteredNews(filtered);
     }
+    setCurrentPage(1);
   };
 
   const handlePopularSearch = (term: string) => {
     setSearchQuery(term);
-    const filtered = newsArticles.filter(article => 
+    const filtered = allNewsArticles.filter(article => 
       article.title.toLowerCase().includes(term.toLowerCase()) || 
       article.excerpt.toLowerCase().includes(term.toLowerCase())
     );
     setFilteredNews(filtered);
+    setCurrentPage(1);
   };
+
+  const handleViewAllNews = () => {
+    setShowAllNews(true);
+    setFilteredNews(allNewsArticles);
+    setCurrentPage(1);
+  };
+  
+  // Get current news items for pagination
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredNews.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredNews.length / itemsPerPage);
   
   return (
     <section id="news" className="section-padding bg-navy-950">
@@ -127,7 +196,7 @@ const NewsSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredNews.map((article) => (
+          {currentItems.map((article) => (
             <div key={article.id} className="group">
               <Card className="h-full bg-navy-800 border border-navy-700 overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-soft">
                 <div className="h-48 bg-navy-700 relative overflow-hidden">
@@ -178,10 +247,40 @@ const NewsSection = () => {
             <p className="text-gray-400">No news articles found matching your search.</p>
           </div>
         )}
+
+        {totalPages > 1 && (
+          <Pagination className="my-8">
+            <PaginationContent>
+              {currentPage > 1 && (
+                <PaginationItem>
+                  <PaginationPrevious onClick={() => setCurrentPage(prev => prev - 1)} />
+                </PaginationItem>
+              )}
+              
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <PaginationItem key={page}>
+                  <PaginationLink 
+                    isActive={page === currentPage}
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              
+              {currentPage < totalPages && (
+                <PaginationItem>
+                  <PaginationNext onClick={() => setCurrentPage(prev => prev + 1)} />
+                </PaginationItem>
+              )}
+            </PaginationContent>
+          </Pagination>
+        )}
         
         <div className="text-center mt-12">
           <Button 
             className="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10 text-lg px-8"
+            onClick={handleViewAllNews}
           >
             View All News <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
