@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,15 +52,6 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hidden md:block">
-            <Button 
-              variant="outline" 
-              className="border border-neon-pink text-neon-pink hover:bg-neon-pink/10"
-            >
-              Sign In
-            </Button>
-          </div>
-
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
             <button
@@ -108,14 +98,6 @@ const Navbar = () => {
             >
               About
             </a>
-            <div className="mt-4 px-3">
-              <Button 
-                variant="outline" 
-                className="w-full border border-neon-pink text-neon-pink hover:bg-neon-pink/10"
-              >
-                Sign In
-              </Button>
-            </div>
           </div>
         </div>
       )}
