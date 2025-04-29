@@ -52,14 +52,12 @@ const newsArticles = [
 
 const NewsSection = () => {
   return (
-    <section id="news" className="py-20 relative overflow-hidden">
-      <div className="absolute inset-0 bg-cyber-dark z-0"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon-pink/5 via-transparent to-transparent z-0"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="news" className="section-padding bg-navy-950">
+      <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-4">
-            <span className="text-neon-pink neon-text">LATEST</span> <span className="text-white">NEWS</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+            <span className="text-white">LATEST</span>{" "}
+            <span className="text-blue-500">NEWS</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
             Stay updated with the latest developments, tournaments, and announcements from the world of esports
@@ -69,11 +67,10 @@ const NewsSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {newsArticles.map((article) => (
             <div key={article.id} className="group">
-              <Card className="h-full bg-cyber-dark/60 backdrop-blur-md border border-gray-800 overflow-hidden transition-all duration-300 group-hover:border-neon-pink/50 group-hover:shadow-lg group-hover:shadow-pink-500/10">
-                <div className="h-48 bg-cyber-navy/50 relative overflow-hidden">
-                  {/* This would be an actual image in production */}
+              <Card className="h-full bg-navy-800 border border-navy-700 overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-soft">
+                <div className="h-48 bg-navy-700 relative overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="p-4 rounded-full bg-neon-pink/20">
+                    <div className="p-4 rounded-full bg-blue-500/20">
                       <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
                         <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
                         <circle cx="9" cy="9" r="2" />
@@ -89,7 +86,7 @@ const NewsSection = () => {
                     <span>{article.date}</span>
                   </div>
                   
-                  <h3 className="text-xl font-cyber font-bold mb-2 text-white group-hover:text-neon-pink transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">
                     {article.title}
                   </h3>
                   
@@ -98,11 +95,11 @@ const NewsSection = () => {
                   </p>
                 </CardContent>
                 
-                <CardFooter className="border-t border-gray-800 p-4">
+                <CardFooter className="border-t border-navy-700 p-4">
                   <Button 
                     asChild
                     variant="ghost" 
-                    className="w-full justify-between text-neon-pink hover:bg-neon-pink/10 font-cyber hover:text-neon-pink"
+                    className="w-full justify-between text-blue-400 hover:bg-blue-500/10 hover:text-blue-400"
                   >
                     <Link to={`/news/${article.id}`}>
                       Read More <ArrowRight className="h-4 w-4" />
@@ -116,7 +113,7 @@ const NewsSection = () => {
         
         <div className="text-center mt-12">
           <Button 
-            className="bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink/10 font-cyber text-lg px-8"
+            className="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10 text-lg px-8"
           >
             View All News <ArrowRight className="ml-2 h-5 w-5" />
           </Button>

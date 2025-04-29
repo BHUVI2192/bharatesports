@@ -1,6 +1,6 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -8,65 +8,35 @@
 
 @layer base {
   :root {
-    --background: 240 33% 5%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 240 33% 7%;
+    --card: 222 47% 15%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 240 33% 7%;
+    --popover: 222 47% 15%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 310 100% 50%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 240 33% 5%;
+    --secondary: 221 83% 53%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 240 33% 15%;
+    --muted: 222 47% 20%;
     --muted-foreground: 240 5% 65%;
 
-    --accent: 120 100% 54%;
+    --accent: 221 83% 53%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 33% 15%;
-    --input: 240 33% 15%;
-    --ring: 310 100% 50%;
+    --border: 222 47% 20%;
+    --input: 222 47% 20%;
+    --ring: 217 91% 60%;
 
     --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 33% 5%;
-    --foreground: 210 40% 98%;
-
-    --card: 240 33% 7%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 240 33% 7%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 310 100% 50%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 240 33% 5%;
-
-    --muted: 240 33% 15%;
-    --muted-foreground: 240 5% 65%;
-
-    --accent: 120 100% 54%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 240 33% 15%;
-    --input: 240 33% 15%;
-    --ring: 310 100% 50%;
   }
 }
 
@@ -76,38 +46,16 @@
   }
 
   body {
-    @apply bg-cyber-dark text-foreground font-cyber;
-    background-image: radial-gradient(circle, rgba(35, 18, 61, 0.3) 0%, rgba(13, 14, 24, 1) 70%);
-  }
-
-  .grid-background {
-    background-size: 40px 40px;
-    background-image: linear-gradient(to right, rgba(255, 0, 255, 0.1) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-    background-position: center center;
-    perspective: 1000px;
-  }
-
-  .neon-border {
-    @apply relative;
-  }
-
-  .neon-border::before {
-    content: '';
-    @apply absolute -inset-[1px] rounded-lg bg-gradient-to-r from-neon-blue via-neon-pink to-neon-green blur-sm;
-    z-index: -1;
+    @apply bg-background text-foreground font-sans;
+    background-image: linear-gradient(to bottom, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 1));
   }
   
-  .neon-text {
-    @apply animate-neon-pulse;
+  .section-padding {
+    @apply py-16 md:py-24;
   }
   
-  .blue-text {
-    @apply animate-blue-pulse;
-  }
-  
-  .green-text {
-    @apply animate-green-pulse;
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 }
 
@@ -117,14 +65,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0D0E18;
+  background: #1e293b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #ff00ff, #00ffff);
+  background: linear-gradient(to bottom, #3b82f6, #2563eb);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #00ffff, #39ff14);
+  background: #1d4ed8;
 }
