@@ -17,8 +17,8 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="flex items-center">
               <span className="text-2xl font-bold text-white font-pixel">
-                <span className="text-neon-pink">NEON</span>
-                <span className="text-neon-blue">ARENA</span>
+                <span className="text-neon-pink">BHARAT</span>
+                <span className="text-neon-blue">ESPORTSEXPRESS</span>
               </span>
             </a>
           </div>
@@ -33,10 +33,10 @@ const Navbar = () => {
                 Home
               </a>
               <a
-                href="#games"
+                href="#accessories"
                 className="text-gray-300 hover:text-neon-pink transition-colors duration-200"
               >
-                Games
+                Accessories
               </a>
               <a
                 href="#news"
@@ -91,10 +91,10 @@ const Navbar = () => {
               Home
             </a>
             <a
-              href="#games"
+              href="#accessories"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-900 hover:text-neon-pink"
             >
-              Games
+              Accessories
             </a>
             <a
               href="#news"
