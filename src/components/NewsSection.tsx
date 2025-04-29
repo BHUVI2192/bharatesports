@@ -1,116 +1,125 @@
 
-import React from "react";
+import React from 'react';
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Link } from 'react-router-dom';
+import { ArrowRight, Calendar } from "lucide-react";
 
-// News card component
-const NewsCard = ({
-  title,
-  date,
-  excerpt,
-  color,
-}: {
-  title: string;
-  date: string;
-  excerpt: string;
-  color: string;
-}) => {
-  // Dynamic classes based on color prop
-  const colorClasses: Record<string, { text: string; border: string; hover: string }> = {
-    pink: {
-      text: "text-neon-pink",
-      border: "border-neon-pink/30",
-      hover: "hover:border-neon-pink",
-    },
-    blue: {
-      text: "text-neon-blue",
-      border: "border-neon-blue/30",
-      hover: "hover:border-neon-blue",
-    },
-    green: {
-      text: "text-neon-green",
-      border: "border-neon-green/30",
-      hover: "hover:border-neon-green",
-    },
-  };
-
-  const classes = colorClasses[color] || colorClasses.pink;
-
-  return (
-    <div
-      className={`bg-cyber-navy/50 rounded-lg p-6 border ${classes.border} transition-all duration-300 ${classes.hover} hover:shadow-lg hover:-translate-y-1`}
-    >
-      <span className={`${classes.text} text-sm font-medium`}>{date}</span>
-      <h3 className="text-xl font-bold mt-2 text-white">{title}</h3>
-      <p className="mt-3 text-gray-400">{excerpt}</p>
-      <div className="mt-4">
-        <a href="#" className={`inline-flex items-center ${classes.text} font-medium`}>
-          Read More
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </a>
-      </div>
-    </div>
-  );
-};
+const newsArticles = [
+  {
+    id: '1',
+    title: 'Bharat Esport Express Announces Major National Tournament',
+    excerpt: 'Registration opens next week for our largest tournament yet, featuring a ₹50 lakh prize pool across multiple game titles.',
+    date: 'April 25, 2025',
+    image: 'tournament.jpg'
+  },
+  {
+    id: '2',
+    title: 'New Gaming Center Opens in Bengaluru with Bharat Esport Express Partnership',
+    excerpt: 'State-of-the-art facility features 50+ gaming stations, coaching areas, and a mini-arena for local tournaments.',
+    date: 'April 20, 2025',
+    image: 'gaming-center.jpg'
+  },
+  {
+    id: '3',
+    title: 'Bharat Esport Express Teams Up with Leading PC Brand for Gaming Laptops',
+    excerpt: 'New line of gaming laptops specifically designed for the Indian esports market to launch next month.',
+    date: 'April 15, 2025',
+    image: 'gaming-laptop.jpg'
+  },
+  {
+    id: '4',
+    title: 'Rising Star Wins Bharat Esport Express Invitational',
+    excerpt: '17-year-old prodigy from Chennai takes home the trophy and ₹5 lakhs in prize money after an impressive performance.',
+    date: 'April 10, 2025',
+    image: 'tournament-winner.jpg'
+  },
+  {
+    id: '5',
+    title: 'Bharat Esport Express Launches Scholarship Program for Young Gamers',
+    excerpt: 'New initiative will provide financial support, equipment, and mentorship to promising esports talent across India.',
+    date: 'April 5, 2025',
+    image: 'scholarship.jpg'
+  },
+  {
+    id: '6',
+    title: 'Mobile Gaming Series Announced for Tier 2 and 3 Cities',
+    excerpt: 'Upcoming tournament series aims to discover untapped gaming talent in smaller cities and rural areas.',
+    date: 'April 1, 2025',
+    image: 'mobile-gaming.jpg'
+  }
+];
 
 const NewsSection = () => {
-  const newsItems = [
-    {
-      id: 1,
-      title: "Neon Drift Championship Finals Announced",
-      date: "2025.04.22",
-      excerpt:
-        "The biggest racing event of the year is approaching. Get ready for neon-lit tracks and fierce competition.",
-      color: "pink",
-    },
-    {
-      id: 2,
-      title: "New Digital Nexus Expansion Coming Soon",
-      date: "2025.04.15",
-      excerpt:
-        "Explore the cybernetic wasteland with new characters, weapons, and a completely new storyline.",
-      color: "blue",
-    },
-    {
-      id: 3,
-      title: "Quantum Break Sets New Player Records",
-      date: "2025.04.10",
-      excerpt:
-        "The action-packed adventure has broken all previous player count records in its first week.",
-      color: "green",
-    },
-  ];
-
   return (
-    <section id="news" className="py-20 bg-cyber-dark relative">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMjIiIGZpbGwtb3BhY2l0eT0iMC4wOCI+PHBhdGggZD0iTTAgMGg2MHY2MEgweiIvPjwvZz48L2c+PC9zdmc+')] opacity-5"></div>
+    <section id="news" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-cyber-dark z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neon-pink/5 via-transparent to-transparent z-0"></div>
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold font-cyber mb-4">
-              <span className="text-neon-green green-text">Latest</span>{" "}
-              <span className="text-white">News</span>
-            </h2>
-            <p className="text-gray-400 max-w-2xl">
-              Stay updated with the latest announcements, updates, and events from
-              the Neon Arena universe.
-            </p>
-          </div>
-          <Button className="mt-4 md:mt-0 bg-transparent border border-neon-green text-neon-green hover:bg-neon-green/10">
-            View All News
-          </Button>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-cyber font-bold mb-4">
+            <span className="text-neon-pink neon-text">LATEST</span> <span className="text-white">NEWS</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Stay updated with the latest developments, tournaments, and announcements from the world of esports
+          </p>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {newsItems.map((item) => (
-            <NewsCard
-              key={item.id}
-              title={item.title}
-              date={item.date}
-              excerpt={item.excerpt}
-              color={item.color}
-            />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {newsArticles.map((article) => (
+            <div key={article.id} className="group">
+              <Card className="h-full bg-cyber-dark/60 backdrop-blur-md border border-gray-800 overflow-hidden transition-all duration-300 group-hover:border-neon-pink/50 group-hover:shadow-lg group-hover:shadow-pink-500/10">
+                <div className="h-48 bg-cyber-navy/50 relative overflow-hidden">
+                  {/* This would be an actual image in production */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="p-4 rounded-full bg-neon-pink/20">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
+                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                        <circle cx="9" cy="9" r="2" />
+                        <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                
+                <CardContent className="p-6">
+                  <div className="flex items-center text-gray-400 text-sm mb-3">
+                    <Calendar className="h-4 w-4 mr-2" />
+                    <span>{article.date}</span>
+                  </div>
+                  
+                  <h3 className="text-xl font-cyber font-bold mb-2 text-white group-hover:text-neon-pink transition-colors duration-300">
+                    {article.title}
+                  </h3>
+                  
+                  <p className="text-gray-400 mb-4">
+                    {article.excerpt}
+                  </p>
+                </CardContent>
+                
+                <CardFooter className="border-t border-gray-800 p-4">
+                  <Button 
+                    asChild
+                    variant="ghost" 
+                    className="w-full justify-between text-neon-pink hover:bg-neon-pink/10 font-cyber hover:text-neon-pink"
+                  >
+                    <Link to={`/news/${article.id}`}>
+                      Read More <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </Card>
+            </div>
           ))}
+        </div>
+        
+        <div className="text-center mt-12">
+          <Button 
+            className="bg-transparent border border-neon-pink text-neon-pink hover:bg-neon-pink/10 font-cyber text-lg px-8"
+          >
+            View All News <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </div>
     </section>

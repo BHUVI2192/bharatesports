@@ -4,6 +4,9 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import FeaturedGames from '@/components/FeaturedGames';
 import NewsSection from '@/components/NewsSection';
+import AccessoriesSection from '@/components/AccessoriesSection';
+import AboutUs from '@/components/AboutUs';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -13,6 +16,11 @@ const Index = () => {
       <Hero />
       <FeaturedGames />
       <NewsSection />
+      <AccessoriesSection />
+      <div className="relative z-10 bg-cyber-dark" id="contact">
+        <AboutUs />
+        <ContactSection />
+      </div>
       <Footer />
     </div>
   );
