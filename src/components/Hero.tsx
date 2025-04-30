@@ -75,14 +75,14 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Image carousel */}
+        {/* Image carousel - Updated with larger size */}
         <div className="w-full md:w-1/2 animate-fade-in" style={{ animationDelay: "0.8s" }}>
           <div className="rounded-lg overflow-hidden shadow-lg border border-blue-500/20">
             <Carousel className="w-full" opts={{ loop: true, duration: 50 }} setApi={setApi}>
               <CarouselContent>
                 {images.map((image, index) => (
                   <CarouselItem key={index} className="relative">
-                    <div className="aspect-video w-full overflow-hidden">
+                    <div className="aspect-[16/10] w-full overflow-hidden">
                       <img 
                         src={image.url} 
                         alt={image.title}
@@ -90,8 +90,8 @@ const Hero = () => {
                       />
                     </div>
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-navy-950 to-transparent p-4">
-                      <p className="font-medium text-lg flex items-center gap-2 text-white">
-                        <Gamepad className="w-5 h-5 text-blue-500" />
+                      <p className="font-medium text-xl flex items-center gap-2 text-white">
+                        <Gamepad className="w-6 h-6 text-blue-500" />
                         {image.title}
                       </p>
                     </div>
