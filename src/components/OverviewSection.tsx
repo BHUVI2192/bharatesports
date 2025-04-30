@@ -43,17 +43,19 @@ const OverviewSection = ({
       </div>
       
       <div className="w-full md:w-1/2 space-y-3 md:space-y-4 px-2 md:px-0">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4 text-center md:text-left">
           {title.split(' ').map((word, index) => (
             <span key={index} className={index % 2 === 0 ? "text-white" : `text-${color}-500`}>{word} </span>
           ))}
         </h2>
         
-        <p className="text-gray-300 text-base md:text-lg">
+        <p className="text-gray-300 text-base md:text-lg text-center md:text-left">
           {description}
         </p>
         
-        {children}
+        <div className="flex justify-center md:justify-start">
+          {children}
+        </div>
       </div>
     </div>
   );

@@ -3,6 +3,8 @@ import React from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import OverviewSection from '@/components/OverviewSection';
+import AboutUs from '@/components/AboutUs';
+import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -69,7 +71,9 @@ const Index = () => {
           </OverviewSection>
         ))}
       </div>
-
+      
+      <AboutUs />
+      <ContactSection />
       <Footer />
     </div>
   );

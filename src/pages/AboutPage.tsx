@@ -2,7 +2,7 @@
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
-import { Trophy, Users, Gamepad, Calendar, MapPin, Mail, Phone } from "lucide-react";
+import { Trophy, Users, Gamepad, Calendar, MapPin, Mail } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const AboutPage = () => {
@@ -212,37 +212,17 @@ const AboutPage = () => {
                 </p>
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 {[
                   {
-                    name: "Arjun Sharma",
+                    name: "Shaik Shahul",
                     position: "Founder & CEO",
-                    bio: "Former professional player with 10+ years of experience in esports management."
+                    bio: "Visionary leader with extensive experience in esports management and a passion for developing the Indian gaming ecosystem."
                   },
                   {
-                    name: "Priya Nair",
-                    position: "Head of Operations",
-                    bio: "Background in sports management with expertise in tournament organization."
-                  },
-                  {
-                    name: "Vikram Mehta",
-                    position: "Technical Director",
-                    bio: "IT professional specializing in gaming infrastructure and streaming technology."
-                  },
-                  {
-                    name: "Neha Singh",
-                    position: "Community Manager",
-                    bio: "Content creator and community builder with a passion for inclusive gaming spaces."
-                  },
-                  {
-                    name: "Rajesh Kumar",
-                    position: "Head of Partnerships",
-                    bio: "Marketing executive with extensive experience in brand collaborations."
-                  },
-                  {
-                    name: "Sneha Patel",
-                    position: "Player Development Lead",
-                    bio: "Former coach who specializes in talent scouting and professional training."
+                    name: "Bhuvan N",
+                    position: "Co-founder & Managing Director",
+                    bio: "Strategic business developer focused on expanding Bharat Esports' reach and creating opportunities for players across India."
                   }
                 ].map((member, index) => (
                   <div key={index} className="bg-navy-900 p-6 rounded-lg border border-navy-700">
@@ -257,34 +237,19 @@ const AboutPage = () => {
                   </div>
                 ))}
               </div>
-              
-              <div className="mt-16">
-                <h3 className="text-2xl font-bold mb-6 text-center text-white">Our Partners</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                  {["Partner 1", "Partner 2", "Partner 3", "Partner 4"].map((partner, index) => (
-                    <div key={index} className="h-24 bg-navy-900 rounded-lg flex items-center justify-center border border-navy-700">
-                      <span className="text-gray-400">{partner}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </CardContent>
           </Card>
           
           <div className="bg-navy-800 border border-navy-700 rounded-lg p-8 mt-8">
             <h3 className="text-2xl font-bold mb-6 text-center text-white">Connect With Us</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <div className="flex items-center justify-center p-4">
                 <MapPin className="h-5 w-5 text-blue-400 mr-3" />
-                <p className="text-gray-300">Mumbai, Delhi, Bengaluru</p>
+                <p className="text-gray-300">Andhra Pradesh, Karnataka</p>
               </div>
               <div className="flex items-center justify-center p-4">
                 <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                <p className="text-gray-300">contact@bharatesports.in</p>
-              </div>
-              <div className="flex items-center justify-center p-4">
-                <Phone className="h-5 w-5 text-blue-400 mr-3" />
-                <p className="text-gray-300">+91 9876543210</p>
+                <p className="text-gray-300">bharatesports.bgmi@gmail.com</p>
               </div>
             </div>
           </div>

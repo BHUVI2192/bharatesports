@@ -97,6 +97,7 @@ html, body {
   width: 100%;
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
+  background-color: rgb(var(--background));
 }
 
 /* Fix for fixed position elements on iOS */
@@ -129,6 +130,17 @@ html, body {
   .mobile-compact {
     padding: 0.75rem !important;
     margin: 0.75rem !important;
+  }
+
+  /* Prevent image overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Improve card padding on mobile */
+  .card {
+    padding: 1.25rem;
   }
 }
 
@@ -179,4 +191,57 @@ html, body {
   h1, h2, h3 {
     letter-spacing: -0.025em;
   }
+
+  /* Fix for blurry backgrounds */
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+  
+  /* Improve form elements spacing */
+  form .space-y-6 > div {
+    margin-bottom: 1.25rem;
+  }
+  
+  /* Better tabs display */
+  .tabs-list {
+    flex-wrap: wrap;
+  }
+  
+  /* Fix header padding */
+  .pt-20 {
+    padding-top: 5rem !important;
+  }
+}
+
+/* Fix for Safari mobile */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Fix for gradient backgrounds */
+.bg-gradient-to-b {
+  background-attachment: fixed;
+}
+
+/* Animation styles */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease forwards;
+}
+
+/* Shadow styles */
+.shadow-button {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
