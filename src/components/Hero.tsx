@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { 
   Carousel, 
   CarouselContent, 
@@ -7,10 +7,10 @@ import {
   CarouselPrevious, 
   CarouselNext 
 } from "@/components/ui/carousel";
-import { Images, Trophy } from "lucide-react";
+import { Trophy } from "lucide-react";
 
 const Hero = () => {
-  // Updated carousel images with popular esports teams and events
+  // Updated carousel images with BGIS winners and Esports World Cup content
   const images = [
     {
       url: "https://static.toiimg.com/photo/106615239.cms",
@@ -34,23 +34,18 @@ const Hero = () => {
     }
   ];
 
-  const featuredTeams = [
-    {
-      name: "Team Versatile",
-      achievement: "BGIS 2024 Champions",
-      description: "The rising stars of Indian esports"
-    },
-    {
-      name: "GodLike Esports",
-      achievement: "Premier Esports Organization",
-      description: "One of India's dominant competitive teams"
-    },
-    {
-      name: "Team Soul",
-      achievement: "Multiple Tournament Winners",
-      description: "Legendary team with loyal fanbase"
-    }
-  ];
+  const [api, setApi] = useState<any>(null);
+  
+  // Auto-rotate carousel
+  useEffect(() => {
+    if (!api) return;
+    
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, [api]);
 
   return (
     <div className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-navy-900 to-navy-950">
@@ -58,7 +53,7 @@ const Hero = () => {
       
       {/* Full-width image carousel */}
       <div className="absolute inset-0 w-full overflow-hidden">
-        <Carousel className="w-full" opts={{ loop: true, duration: 50 }} autoplay={true}>
+        <Carousel className="w-full" opts={{ loop: true, duration: 50 }} setApi={setApi}>
           <CarouselContent>
             {images.map((image, index) => (
               <CarouselItem key={index} className="relative h-[90vh] w-full">
@@ -70,7 +65,7 @@ const Hero = () => {
                 />
                 <div className="absolute bottom-20 left-0 right-0 text-white z-20 container-custom">
                   <p className="font-medium text-lg md:text-xl flex items-center gap-2">
-                    <Trophy className="w-5 h-5 text-neon-pink" />
+                    <Trophy className="w-5 h-5 text-blue-500" />
                     {image.title}
                   </p>
                 </div>
@@ -85,8 +80,8 @@ const Hero = () => {
       </div>
       
       <div className="container-custom pt-24 pb-16 relative z-10">
-        <div className="text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 flex flex-col items-center md:items-start backdrop-blur-sm bg-navy-950/50 p-6 rounded-lg border border-blue-500/20">
+        <div className="text-center md:text-left">
+          <div className="space-y-6 flex flex-col items-center md:items-start backdrop-blur-sm bg-navy-950/50 p-6 rounded-lg border border-blue-500/20 max-w-lg mx-auto md:mx-0">
             <div className="animate-fade-in">
               <img 
                 src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
@@ -100,29 +95,9 @@ const Hero = () => {
               <span className="block text-blue-500 animate-fade-in" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
             
-            <p className="text-lg text-gray-300 max-w-lg mx-auto md:mx-0 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+            <p className="text-lg text-gray-300 max-w-lg animate-fade-in" style={{ animationDelay: "0.6s" }}>
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
-          </div>
-          
-          <div className="hidden md:block animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <div className="backdrop-blur-sm bg-navy-950/50 p-6 rounded-lg border border-blue-500/20">
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
-                <Trophy className="w-6 h-6 mr-2 text-neon-pink" /> Featured Teams
-              </h2>
-              <div className="space-y-4">
-                {featuredTeams.map((team, index) => (
-                  <div 
-                    key={index} 
-                    className="p-4 border border-blue-500/20 rounded-lg hover:border-blue-500/50 transition-all duration-300"
-                  >
-                    <h3 className="text-xl font-bold text-white">{team.name}</h3>
-                    <p className="text-blue-400">{team.achievement}</p>
-                    <p className="text-gray-300 text-sm mt-2">{team.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
         
