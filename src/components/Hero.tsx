@@ -8,6 +8,7 @@ import {
   CarouselNext 
 } from "@/components/ui/carousel";
 import { Gamepad } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Hero = () => {
   // Gaming/esports themed images
@@ -36,6 +37,7 @@ const Hero = () => {
 
   const [api, setApi] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isMobile = useIsMobile();
   
   // Auto-rotate carousel
   useEffect(() => {
@@ -82,33 +84,33 @@ const Hero = () => {
       </div>
       
       {/* Content */}
-      <div className="container-custom pt-32 pb-16 relative z-20">
+      <div className="container-custom pt-16 md:pt-24 lg:pt-32 pb-16 relative z-20">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-8 animate-fade-in">
+          <div className="space-y-6 md:space-y-8 animate-fade-in">
             <div className="flex justify-center">
               <img 
                 src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
                 alt="Bharat Esport Express Logo" 
-                className="w-32 h-32 object-contain"
+                className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain"
               />
             </div>
             
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            <h1 className={`font-bold tracking-tight ${isMobile ? 'text-4xl' : 'text-5xl md:text-6xl lg:text-7xl'}`}>
               <span className="block text-white mb-2 animate-fade-in drop-shadow-lg" style={{ animationDelay: "0.2s" }}>BHARAT</span>
               <span className="block text-blue-500 animate-fade-in drop-shadow-lg" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
             
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in backdrop-blur-sm bg-navy-950/30 p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in backdrop-blur-sm bg-navy-950/30 p-3 md:p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
             
             {/* Image indicator dots */}
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-2 mt-4 md:mt-6">
               {images.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    currentIndex === index ? "bg-blue-500 w-8" : "bg-white/50"
+                  className={`w-2 md:w-3 h-2 md:h-3 rounded-full transition-all ${
+                    currentIndex === index ? "bg-blue-500 w-6 md:w-8" : "bg-white/50"
                   }`}
                   onClick={() => api?.scrollTo(index)}
                 />
@@ -117,7 +119,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <div className="mt-16 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="mt-12 md:mt-16 lg:mt-28 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
           {[
             { 
               title: "Latest Updates", 
@@ -137,16 +139,16 @@ const Hero = () => {
           ].map((item, index) => (
             <div 
               key={index}
-              className="bg-navy-800/30 backdrop-blur-sm p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in"
+              className="bg-navy-800/30 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: item.delay }}
             >
-              <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-              <p className="text-gray-300">{item.description}</p>
+              <h3 className="text-lg md:text-xl font-bold text-white mb-2">{item.title}</h3>
+              <p className="text-sm md:text-base text-gray-300">{item.description}</p>
             </div>
           ))}
         </div>
         
-        <div className="mt-16 text-center animate-fade-in" style={{ animationDelay: "1.6s" }}>
+        <div className="mt-10 md:mt-16 text-center animate-fade-in" style={{ animationDelay: "1.6s" }}>
           <a 
             href="#news" 
             className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
@@ -154,7 +156,7 @@ const Hero = () => {
             Scroll down to discover more
             <svg 
               xmlns="http://www.w3.org/2000/svg" 
-              className="h-5 w-5 ml-1 animate-bounce" 
+              className="h-4 w-4 md:h-5 md:w-5 ml-1 animate-bounce" 
               viewBox="0 0 20 20" 
               fill="currentColor"
             >

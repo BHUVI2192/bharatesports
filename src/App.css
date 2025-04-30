@@ -1,8 +1,14 @@
+
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  #root {
+    padding: 0;
+  }
 }
 
 .logo {
@@ -39,4 +45,36 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Media Queries */
+@media (max-width: 640px) {
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Responsive improvements */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix for fixed position elements on iOS */
+@supports (-webkit-touch-callout: none) {
+  .fixed {
+    position: fixed;
+    /* iOS specific fix for fixed position */
+    width: 100%;
+  }
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

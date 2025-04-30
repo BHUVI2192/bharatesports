@@ -1,21 +1,45 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useIsMobile();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  // Add scroll event listener to change navbar appearance on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="fixed w-full z-50 bg-cyber-darker/80 backdrop-blur-md border-b border-neon-blue/20">
+    <nav 
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-navy-950/90 shadow-md" : "bg-transparent"
+      } backdrop-blur-md border-b border-neon-blue/20`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
             <a href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-white font-pixel">
+              <span className={`font-bold text-white font-pixel ${isMobile ? 'text-xl' : 'text-2xl'}`}>
                 <span className="text-neon-pink">BHARAT</span>
                 <span className="text-neon-blue">ESPORTSEXPRESS</span>
               </span>
@@ -71,36 +95,38 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu, show/hide based on menu state */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-cyber-darker/95 backdrop-blur-md">
-            <a
-              href="#"
-              className="block px-3 py-2 rounded-md text-base font-medium text-neon-blue hover:bg-gray-900"
-            >
-              Home
-            </a>
-            <a
-              href="#accessories"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-900 hover:text-neon-pink"
-            >
-              Accessories
-            </a>
-            <a
-              href="#news"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-900 hover:text-neon-green"
-            >
-              News
-            </a>
-            <a
-              href="#about"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-900 hover:text-neon-yellow"
-            >
-              About
-            </a>
-          </div>
+      <div className={`md:hidden transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-navy-950/95 backdrop-blur-md">
+          <a
+            href="#"
+            className="block px-3 py-2 rounded-md text-base font-medium text-neon-blue hover:bg-navy-900"
+            onClick={() => setIsOpen(false)}
+          >
+            Home
+          </a>
+          <a
+            href="#accessories"
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-navy-900 hover:text-neon-pink"
+            onClick={() => setIsOpen(false)}
+          >
+            Accessories
+          </a>
+          <a
+            href="#news"
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-navy-900 hover:text-neon-green"
+            onClick={() => setIsOpen(false)}
+          >
+            News
+          </a>
+          <a
+            href="#about"
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-navy-900 hover:text-neon-yellow"
+            onClick={() => setIsOpen(false)}
+          >
+            About
+          </a>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
