@@ -2,14 +2,20 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
   // Add scroll event listener to change navbar appearance on scroll
@@ -29,50 +35,54 @@ const Navbar = () => {
     };
   }, []);
 
+  // Navigation links
+  const navItems = [
+    { path: "/", label: "Home" },
+    { path: "/news", label: "News" },
+    { path: "/accessories", label: "Accessories" },
+    { path: "/about", label: "About" },
+  ];
+
+  // Check if link is active
+  const isActive = (path: string) => {
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    return false;
+  };
+
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-navy-950/90 shadow-md" : "bg-transparent"
-      } backdrop-blur-md border-b border-neon-blue/20`}
+      } backdrop-blur-md border-b border-blue-500/20`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
-            <a href="/" className="flex items-center">
-              <span className={`font-bold text-white font-pixel ${isMobile ? 'text-xl' : 'text-2xl'}`}>
-                <span className="text-neon-pink">BHARAT</span>
-                <span className="text-neon-blue">ESPORTSEXPRESS</span>
+            <Link to="/" className="flex items-center">
+              <span className={`font-bold text-white ${isMobile ? 'text-xl' : 'text-2xl'}`}>
+                <span className="text-blue-500">BHARAT</span>
+                <span className="text-white">ESPORT</span>
               </span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-8">
-              <a
-                href="#"
-                className="text-neon-blue hover:text-white transition-colors duration-200"
-              >
-                Home
-              </a>
-              <a
-                href="#accessories"
-                className="text-gray-300 hover:text-neon-pink transition-colors duration-200"
-              >
-                Accessories
-              </a>
-              <a
-                href="#news"
-                className="text-gray-300 hover:text-neon-green transition-colors duration-200"
-              >
-                News
-              </a>
-              <a
-                href="#about"
-                className="text-gray-300 hover:text-neon-yellow transition-colors duration-200"
-              >
-                About
-              </a>
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`transition-colors duration-200 ${
+                    isActive(item.path) 
+                      ? "text-blue-400" 
+                      : "text-gray-300 hover:text-blue-400"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -80,12 +90,12 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-neon-blue hover:text-white focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-blue-400 hover:text-white focus:outline-none"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? (
-                <X className="block h-6 w-6 text-neon-pink" aria-hidden="true" />
+                <X className="block h-6 w-6 text-blue-400" aria-hidden="true" />
               ) : (
                 <Menu className="block h-6 w-6" aria-hidden="true" />
               )}
@@ -97,34 +107,20 @@ const Navbar = () => {
       {/* Mobile menu, show/hide based on menu state */}
       <div className={`md:hidden transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-navy-950/95 backdrop-blur-md">
-          <a
-            href="#"
-            className="block px-3 py-2 rounded-md text-base font-medium text-neon-blue hover:bg-navy-900"
-            onClick={() => setIsOpen(false)}
-          >
-            Home
-          </a>
-          <a
-            href="#accessories"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-navy-900 hover:text-neon-pink"
-            onClick={() => setIsOpen(false)}
-          >
-            Accessories
-          </a>
-          <a
-            href="#news"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-navy-900 hover:text-neon-green"
-            onClick={() => setIsOpen(false)}
-          >
-            News
-          </a>
-          <a
-            href="#about"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-navy-900 hover:text-neon-yellow"
-            onClick={() => setIsOpen(false)}
-          >
-            About
-          </a>
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                isActive(item.path)
+                  ? "text-blue-400 bg-navy-900/50"
+                  : "text-gray-300 hover:bg-navy-900 hover:text-blue-400"
+              }`}
+              onClick={closeMenu}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
