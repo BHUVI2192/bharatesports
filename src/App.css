@@ -73,14 +73,21 @@
 
 /* Section padding */
 .section-padding {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 768px) {
   .section-padding {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 
@@ -104,8 +111,24 @@ html, body {
 /* Improved touch targets for mobile */
 @media (max-width: 768px) {
   button, a {
-    min-height: 44px;
-    min-width: 44px;
+    min-height: 36px;
+    min-width: 36px;
+  }
+  
+  /* Improved mobile form spacing */
+  input, select, textarea {
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Better mobile text size */
+  body {
+    font-size: 15px;
+  }
+  
+  /* Reduce padding/margins for mobile */
+  .mobile-compact {
+    padding: 0.75rem !important;
+    margin: 0.75rem !important;
   }
 }
 
@@ -128,4 +151,32 @@ html, body {
 .page-exit-active {
   opacity: 0;
   transition: opacity 300ms;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 480px) {
+  .container-custom {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Smaller content padding on very small screens */
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Ensure proper sizing of interactive elements */
+  button, 
+  a.button, 
+  input[type="submit"] {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    min-height: 44px;
+  }
+  
+  /* Improve text legibility on small screens */
+  h1, h2, h3 {
+    letter-spacing: -0.025em;
+  }
 }

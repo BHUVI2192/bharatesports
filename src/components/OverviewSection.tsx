@@ -30,7 +30,7 @@ const OverviewSection = ({
   const gradientClass = colorClasses[color as keyof typeof colorClasses] || colorClasses.blue;
   
   return (
-    <div className={`flex flex-col ${!isMobile && reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-12 items-center`}>
+    <div className={`flex flex-col ${!isMobile && reverse ? 'md:flex-row-reverse' : 'md:flex-row'} gap-6 md:gap-8 lg:gap-12 items-center`}>
       <div className="w-full md:w-1/2 relative overflow-hidden rounded-lg">
         <div className="aspect-video w-full overflow-hidden rounded-lg relative">
           <img 
@@ -42,14 +42,14 @@ const OverviewSection = ({
         </div>
       </div>
       
-      <div className="w-full md:w-1/2 space-y-4">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
+      <div className="w-full md:w-1/2 space-y-3 md:space-y-4 px-2 md:px-0">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-4">
           {title.split(' ').map((word, index) => (
             <span key={index} className={index % 2 === 0 ? "text-white" : `text-${color}-500`}>{word} </span>
           ))}
         </h2>
         
-        <p className="text-gray-300 text-lg">
+        <p className="text-gray-300 text-base md:text-lg">
           {description}
         </p>
         

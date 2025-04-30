@@ -58,7 +58,7 @@ const Hero = () => {
   }, [api]);
 
   return (
-    <div className="relative min-h-[90vh] overflow-hidden">
+    <div className="relative min-h-[92vh] overflow-hidden">
       {/* Full-screen carousel background */}
       <div className="absolute inset-0 z-0">
         <Carousel className="w-full h-full" opts={{ loop: true, duration: 50 }} setApi={setApi}>
@@ -78,48 +78,49 @@ const Hero = () => {
         </Carousel>
         
         {/* Dark overlay with pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/80 to-navy-950/90 z-10">
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/60 to-navy-950/80 z-10">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
         </div>
       </div>
       
       {/* Content */}
       <div className="container-custom pt-16 md:pt-24 lg:pt-32 pb-16 relative z-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="space-y-6 md:space-y-8 animate-fade-in">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <div className="space-y-5 md:space-y-8 animate-fade-in">
             <div className="flex justify-center">
               <img 
                 src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
                 alt="Bharat Esport Express Logo" 
-                className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain"
+                className="w-20 h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain"
               />
             </div>
             
-            <h1 className={`font-bold tracking-tight ${isMobile ? 'text-4xl' : 'text-5xl md:text-6xl lg:text-7xl'}`}>
-              <span className="block text-white mb-2 animate-fade-in drop-shadow-lg" style={{ animationDelay: "0.2s" }}>BHARAT</span>
-              <span className="block text-blue-500 animate-fade-in drop-shadow-lg" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
+            <h1 className="font-bold tracking-tight text-4xl md:text-5xl lg:text-7xl mt-2 md:mt-0">
+              <span className="block text-white mb-1 md:mb-2 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.2s" }}>BHARAT</span>
+              <span className="block text-blue-500 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in backdrop-blur-sm bg-navy-950/30 p-3 md:p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
+            <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in backdrop-blur-sm bg-navy-950/20 p-2 md:p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
             
             {/* Image indicator dots */}
-            <div className="flex justify-center gap-2 mt-4 md:mt-6">
+            <div className="flex justify-center gap-1.5 md:gap-2 mt-3 md:mt-6">
               {images.map((_, index) => (
                 <button
                   key={index}
-                  className={`w-2 md:w-3 h-2 md:h-3 rounded-full transition-all ${
-                    currentIndex === index ? "bg-blue-500 w-6 md:w-8" : "bg-white/50"
+                  className={`h-2 md:h-3 rounded-full transition-all ${
+                    currentIndex === index ? "bg-blue-500 w-5 md:w-8" : "bg-white/50 w-2 md:w-3"
                   }`}
                   onClick={() => api?.scrollTo(index)}
+                  aria-label={`Go to image ${index + 1}`}
                 />
               ))}
             </div>
           </div>
         </div>
         
-        <div className="mt-12 md:mt-16 lg:mt-28 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+        <div className="mt-10 md:mt-16 lg:mt-28 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 px-3">
           {[
             { 
               title: "Latest Updates", 
