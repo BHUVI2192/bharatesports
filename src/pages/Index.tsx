@@ -46,7 +46,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       
-      <div className="container-custom py-12 md:py-20 lg:py-24 space-y-16 md:space-y-24 lg:space-y-32">
+      <div className="container-custom py-8 md:py-16 lg:py-20 space-y-12 md:space-y-20 lg:space-y-24">
         {sections.map((section, index) => (
           <OverviewSection 
             key={section.id}
@@ -58,7 +58,7 @@ const Index = () => {
           >
             <Button 
               asChild
-              className={`mt-4 md:mt-6 px-6 ${
+              className={`mt-4 px-4 md:px-6 py-2 md:py-2.5 ${
                 section.color === "blue" ? "bg-blue-500 hover:bg-blue-600" : 
                 section.color === "green" ? "bg-emerald-500 hover:bg-emerald-600" : 
                 "bg-purple-500 hover:bg-purple-600"

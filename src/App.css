@@ -3,6 +3,7 @@
   width: 100%;
   margin: 0 auto;
   text-align: center;
+  overflow-x: hidden;
 }
 
 @media (min-width: 768px) {
@@ -73,21 +74,21 @@
 
 /* Section padding */
 .section-padding {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 @media (min-width: 768px) {
   .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -98,6 +99,8 @@ html, body {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
   background-color: rgb(var(--background));
+  max-width: 100vw;
+  position: relative;
 }
 
 /* Fix for fixed position elements on iOS */
@@ -106,6 +109,8 @@ html, body {
     position: fixed;
     /* iOS specific fix for fixed position */
     width: 100%;
+    left: 0;
+    right: 0;
   }
 }
 
@@ -119,6 +124,7 @@ html, body {
   /* Improved mobile form spacing */
   input, select, textarea {
     margin-bottom: 0.75rem;
+    font-size: 16px; /* Prevents iOS zoom on input focus */
   }
   
   /* Better mobile text size */
@@ -140,7 +146,12 @@ html, body {
 
   /* Improve card padding on mobile */
   .card {
-    padding: 1.25rem;
+    padding: 1rem;
+  }
+  
+  /* Fix for dropdown menus on mobile */
+  .absolute {
+    max-width: 90vw;
   }
 }
 
@@ -174,8 +185,8 @@ html, body {
   
   /* Smaller content padding on very small screens */
   .section-padding {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
   
   /* Ensure proper sizing of interactive elements */
@@ -189,7 +200,7 @@ html, body {
   
   /* Improve text legibility on small screens */
   h1, h2, h3 {
-    letter-spacing: -0.025em;
+    letter-spacing: -0.01em;
   }
 
   /* Fix for blurry backgrounds */
@@ -199,7 +210,7 @@ html, body {
   
   /* Improve form elements spacing */
   form .space-y-6 > div {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1rem;
   }
   
   /* Better tabs display */
@@ -209,7 +220,19 @@ html, body {
   
   /* Fix header padding */
   .pt-20 {
-    padding-top: 5rem !important;
+    padding-top: 4rem !important;
+  }
+  
+  /* Fix for tabs on mobile */
+  .TabsTrigger {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Prevent horizontal scroll */
+  .overflow-x-auto {
+    max-width: 100vw;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -218,11 +241,15 @@ html, body {
   .min-h-screen {
     min-height: -webkit-fill-available;
   }
+  
+  body {
+    min-height: -webkit-fill-available;
+  }
 }
 
 /* Fix for gradient backgrounds */
 .bg-gradient-to-b {
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 /* Animation styles */
@@ -244,4 +271,39 @@ html, body {
 /* Shadow styles */
 .shadow-button {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Force fix for mobile overflow issues */
+.overflow-x-hidden {
+  max-width: 100%;
+  overflow-x: clip !important;
+  position: relative;
+}
+
+/* Fix for iOS safari overscroll */
+html {
+  overflow: hidden;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for nested scrolling containers */
+.overflow-auto, 
+.overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix for mobile tab buttons */
+@media (max-width: 640px) {
+  button[role="tab"] {
+    flex: 1;
+    white-space: nowrap;
+    min-width: auto;
+    font-size: 0.875rem;
+  }
 }
