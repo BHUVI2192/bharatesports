@@ -7,21 +7,48 @@ import {
   CarouselPrevious, 
   CarouselNext 
 } from "@/components/ui/carousel";
-import { Images } from "lucide-react";
+import { Images, Trophy } from "lucide-react";
 
 const Hero = () => {
+  // Updated carousel images with popular esports teams and events
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5",
-      title: "Gaming Technology"
+      url: "https://static.toiimg.com/photo/106615239.cms",
+      title: "Team Versatile - BGIS Champions"
     },
     {
-      url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1",
-      title: "Esports Setup"
+      url: "https://www.insidesport.in/wp-content/uploads/2024/03/GODLIKE.jpg?w=690",
+      title: "Team GodLike Esports"
     },
     {
-      url: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81",
-      title: "Tournament Experience"
+      url: "https://staticg.sportskeeda.com/editor/2023/05/36c6a-16830097756092-1920.jpg",
+      title: "Team Soul - Top Indian Esports Team"
+    },
+    {
+      url: "https://img.pikbest.com/origin/09/37/37/85ZpIkbEsTyVf.jpg!w700wp",
+      title: "Esports World Cup"
+    },
+    {
+      url: "https://i0.wp.com/thebridge.in/wp-content/uploads/2023/03/FqUatG6aQAECZpo-1-e1679638211512.jpg",
+      title: "BGIS Tournament Action"
+    }
+  ];
+
+  const featuredTeams = [
+    {
+      name: "Team Versatile",
+      achievement: "BGIS 2024 Champions",
+      description: "The rising stars of Indian esports"
+    },
+    {
+      name: "GodLike Esports",
+      achievement: "Premier Esports Organization",
+      description: "One of India's dominant competitive teams"
+    },
+    {
+      name: "Team Soul",
+      achievement: "Multiple Tournament Winners",
+      description: "Legendary team with loyal fanbase"
     }
   ];
 
@@ -29,9 +56,37 @@ const Hero = () => {
     <div className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-navy-900 to-navy-950">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10 z-0"></div>
       
+      {/* Full-width image carousel */}
+      <div className="absolute inset-0 w-full overflow-hidden">
+        <Carousel className="w-full" opts={{ loop: true, duration: 50 }} autoplay={true}>
+          <CarouselContent>
+            {images.map((image, index) => (
+              <CarouselItem key={index} className="relative h-[90vh] w-full">
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/80 to-transparent z-10"></div>
+                <img 
+                  src={image.url} 
+                  alt={image.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute bottom-20 left-0 right-0 text-white z-20 container-custom">
+                  <p className="font-medium text-lg md:text-xl flex items-center gap-2">
+                    <Trophy className="w-5 h-5 text-neon-pink" />
+                    {image.title}
+                  </p>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className="absolute z-30 bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            <CarouselPrevious className="relative inset-0 translate-y-0 left-0 right-auto bg-white/10 backdrop-blur-sm hover:bg-white/20" />
+            <CarouselNext className="relative inset-0 translate-y-0 right-0 bg-white/10 backdrop-blur-sm hover:bg-white/20" />
+          </div>
+        </Carousel>
+      </div>
+      
       <div className="container-custom pt-24 pb-16 relative z-10">
         <div className="text-center md:text-left grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 flex flex-col items-center md:items-start">
+          <div className="space-y-6 flex flex-col items-center md:items-start backdrop-blur-sm bg-navy-950/50 p-6 rounded-lg border border-blue-500/20">
             <div className="animate-fade-in">
               <img 
                 src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
@@ -51,34 +106,23 @@ const Hero = () => {
           </div>
           
           <div className="hidden md:block animate-fade-in" style={{ animationDelay: "0.8s" }}>
-            <Carousel className="w-full max-w-md mx-auto">
-              <CarouselContent>
-                {images.map((image, index) => (
-                  <CarouselItem key={index} className="pl-4">
-                    <div className="overflow-hidden rounded-lg shadow-lg">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 to-transparent z-10"></div>
-                        <img
-                          src={image.url}
-                          alt={image.title}
-                          className="w-full h-64 object-cover transition-transform duration-700 hover:scale-110"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white z-20">
-                          <p className="font-medium flex items-center gap-2">
-                            <Images className="w-4 h-4" />
-                            {image.title}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </CarouselItem>
+            <div className="backdrop-blur-sm bg-navy-950/50 p-6 rounded-lg border border-blue-500/20">
+              <h2 className="text-2xl font-bold text-white mb-4 flex items-center">
+                <Trophy className="w-6 h-6 mr-2 text-neon-pink" /> Featured Teams
+              </h2>
+              <div className="space-y-4">
+                {featuredTeams.map((team, index) => (
+                  <div 
+                    key={index} 
+                    className="p-4 border border-blue-500/20 rounded-lg hover:border-blue-500/50 transition-all duration-300"
+                  >
+                    <h3 className="text-xl font-bold text-white">{team.name}</h3>
+                    <p className="text-blue-400">{team.achievement}</p>
+                    <p className="text-gray-300 text-sm mt-2">{team.description}</p>
+                  </div>
                 ))}
-              </CarouselContent>
-              <div className="flex justify-end mt-2 gap-2">
-                <CarouselPrevious className="relative inset-0 translate-y-0 left-0 right-auto" />
-                <CarouselNext className="relative inset-0 translate-y-0 right-0" />
               </div>
-            </Carousel>
+            </div>
           </div>
         </div>
         
