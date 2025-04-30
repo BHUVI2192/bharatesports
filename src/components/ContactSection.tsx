@@ -174,7 +174,7 @@ const ContactSection = () => {
                   Connect with other gamers, participate in tournaments, and stay updated on the latest news.
                 </p>
                 <Button 
-                  onClick={() => window.open('https://chat.whatsapp.com/JRZJANi7MfLKtyB7yC0IT9', '_blank')}
+                  onClick={() => window.open('https://chat.whatsapp.com/E3pTs9m945m8t2NkNhXeKX', '_blank')}
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white shadow-button"
                 >
                   Join WhatsApp Group

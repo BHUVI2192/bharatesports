@@ -2,7 +2,7 @@
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
-import { Trophy, Users, Gamepad, Calendar, MapPin, Mail } from "lucide-react";
+import { Trophy, Users, Gamepad, Calendar, MapPin, Mail, Instagram } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const AboutPage = () => {
@@ -217,12 +217,14 @@ const AboutPage = () => {
                   {
                     name: "Shaik Shahul",
                     position: "Founder & CEO",
-                    bio: "Visionary leader with extensive experience in esports management and a passion for developing the Indian gaming ecosystem."
+                    bio: "Visionary leader with extensive experience in esports management and a passion for developing the Indian gaming ecosystem.",
+                    instagram: "https://www.instagram.com/ig_sparkzzz?igsh=c3JhaGZueGhreWpv"
                   },
                   {
                     name: "Bhuvan N",
                     position: "Co-founder & Managing Director",
-                    bio: "Strategic business developer focused on expanding Bharat Esports' reach and creating opportunities for players across India."
+                    bio: "Strategic business developer focused on expanding Bharat Esports' reach and creating opportunities for players across India.",
+                    instagram: "https://www.instagram.com/damn_itx.bhuvi?igsh=MWZzN3Z5MHU0anVwaA=="
                   }
                 ].map((member, index) => (
                   <div key={index} className="bg-navy-900 p-6 rounded-lg border border-navy-700">
@@ -233,7 +235,18 @@ const AboutPage = () => {
                     </div>
                     <h4 className="text-lg font-bold text-white text-center mb-1">{member.name}</h4>
                     <p className="text-blue-400 text-sm text-center mb-3">{member.position}</p>
-                    <p className="text-gray-400 text-sm text-center">{member.bio}</p>
+                    <p className="text-gray-400 text-sm text-center mb-4">{member.bio}</p>
+                    <div className="flex justify-center">
+                      <a 
+                        href={member.instagram} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                      >
+                        <Instagram className="h-5 w-5" />
+                        <span>Follow on Instagram</span>
+                      </a>
+                    </div>
                   </div>
                 ))}
               </div>
