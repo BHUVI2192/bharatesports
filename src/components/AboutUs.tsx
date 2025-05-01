@@ -28,6 +28,7 @@ const AboutUs = () => {
                     src="/lovable-uploads/4ce209e6-a051-4f8f-8d93-b1cb7c888568.png" 
                     alt="Bharat Esport Express Logo" 
                     className="w-36 h-36 md:w-48 md:h-48 object-contain"
+                    loading="eager"
                   />
                 </div>
                 
@@ -45,7 +46,7 @@ const AboutUs = () => {
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-6 md:mt-8">
-                <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900/70 rounded-lg border border-navy-700">
+                <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900 rounded-lg border border-navy-700">
                   <div className="p-3 rounded-full bg-blue-500/20 mb-3 md:mb-4">
                     <Trophy className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
                   </div>
@@ -53,7 +54,7 @@ const AboutUs = () => {
                   <p className="text-gray-400 text-sm md:text-base">Organizing high-stakes tournaments across multiple game titles with substantial prize pools of ₹200K</p>
                 </div>
                 
-                <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900/70 rounded-lg border border-navy-700">
+                <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900 rounded-lg border border-navy-700">
                   <div className="p-3 rounded-full bg-blue-500/20 mb-3 md:mb-4">
                     <Users className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
                   </div>
@@ -61,7 +62,7 @@ const AboutUs = () => {
                   <p className="text-gray-400 text-sm md:text-base">Building a supportive network of 27K+ players, creators, and fans united by their passion for gaming</p>
                 </div>
                 
-                <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900/70 rounded-lg border border-navy-700 sm:col-span-2 md:col-span-1">
+                <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900 rounded-lg border border-navy-700 sm:col-span-2 md:col-span-1">
                   <div className="p-3 rounded-full bg-blue-500/20 mb-3 md:mb-4">
                     <Gamepad className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
                   </div>
@@ -73,23 +74,23 @@ const AboutUs = () => {
               <div className="mt-8 md:mt-10">
                 <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center text-white">Our Team</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-navy-900/70 p-4 md:p-6 rounded-lg border border-navy-700">
+                  <div className="bg-navy-900 p-4 md:p-6 rounded-lg border border-navy-700">
                     <h4 className="text-lg md:text-xl font-semibold mb-2 text-white text-center md:text-left">Founder</h4>
                     <p className="text-gray-400 text-sm md:text-base mb-2 text-center md:text-left">Leading our vision and strategy</p>
-                    <div className="flex items-center justify-center md:justify-start">
-                      <span className="text-blue-400 mr-2">Email:</span>
-                      <a href="mailto:Shahulshaik02405@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm md:text-base break-all">
+                    <div className="flex flex-wrap items-center justify-center md:justify-start">
+                      <span className="text-blue-400 mr-2 mb-1">Email:</span>
+                      <a href="mailto:Shahulshaik02405@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm md:text-base">
                         Shahulshaik02405@gmail.com
                       </a>
                     </div>
                   </div>
                   
-                  <div className="bg-navy-900/70 p-4 md:p-6 rounded-lg border border-navy-700">
+                  <div className="bg-navy-900 p-4 md:p-6 rounded-lg border border-navy-700">
                     <h4 className="text-lg md:text-xl font-semibold mb-2 text-white text-center md:text-left">Co-Founder</h4>
                     <p className="text-gray-400 text-sm md:text-base mb-2 text-center md:text-left">Overseeing operations and community</p>
-                    <div className="flex items-center justify-center md:justify-start">
-                      <span className="text-blue-400 mr-2">Email:</span>
-                      <a href="mailto:cnbhuvan011@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm md:text-base break-all">
+                    <div className="flex flex-wrap items-center justify-center md:justify-start">
+                      <span className="text-blue-400 mr-2 mb-1">Email:</span>
+                      <a href="mailto:cnbhuvan011@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm md:text-base">
                         cnbhuvan011@gmail.com
                       </a>
                     </div>

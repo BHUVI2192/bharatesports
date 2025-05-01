@@ -152,35 +152,30 @@ html, body {
     max-width: 90vw;
   }
   
-  /* Remove blur effects from mobile - IMPORTANT FIX */
+  /* COMPLETELY REMOVE ALL BLUR EFFECTS FROM MOBILE */
   .backdrop-blur-sm, 
   .bg-navy-950, 
   .bg-navy-900, 
-  .bg-navy-800 {
+  .bg-navy-800,
+  [class*="backdrop-blur"],
+  [class*="bg-opacity"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    background-attachment: scroll;
   }
-}
-
-/* Utility classes for page transitions */
-.page-enter {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.page-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 300ms, transform 300ms;
-}
-
-.page-exit {
-  opacity: 1;
-}
-
-.page-exit-active {
-  opacity: 0;
-  transition: opacity 300ms;
+  
+  /* Force solid backgrounds without any transparency */
+  .bg-navy-950 {
+    background-color: #0a101f !important;
+  }
+  
+  .bg-navy-900 {
+    background-color: #0f172a !important;
+  }
+  
+  .bg-navy-800 {
+    background-color: #1e293b !important;
+  }
 }
 
 /* Mobile specific fixes */
@@ -210,14 +205,29 @@ html, body {
     letter-spacing: -0.01em;
   }
 
-  /* Fix for blurry backgrounds - REMOVE BLUR COMPLETELY */
+  /* REMOVE ALL BLURS COMPLETELY */
   .backdrop-blur-sm,
   .bg-navy-950, 
   .bg-navy-900, 
-  .bg-navy-800 {
+  .bg-navy-800,
+  [class*="backdrop-blur"],
+  [class*="bg-opacity"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     background-attachment: scroll;
+  }
+  
+  /* Force solid backgrounds */
+  .bg-navy-950 {
+    background-color: #0a101f !important;
+  }
+  
+  .bg-navy-900 {
+    background-color: #0f172a !important;
+  }
+  
+  .bg-navy-800 {
+    background-color: #1e293b !important;
   }
   
   /* Improve form elements spacing */
@@ -249,14 +259,11 @@ html, body {
     max-width: 100%;
   }
   
-  /* Ensure proper alignment for email addresses */
-  .text-blue-400 {
-    word-break: break-word;
-  }
-  
-  /* Fix long email display */
+  /* Fix email display for mobile */
+  .text-blue-400, 
   a[href^="mailto:"] {
     word-break: break-all;
+    overflow-wrap: break-word;
     display: inline-block;
     max-width: 100%;
   }
@@ -275,6 +282,17 @@ html, body {
   /* Disable fixed position for Safari mobile */
   .fixed {
     position: absolute;
+  }
+  
+  /* SPECIFIC FIX FOR SAFARI BLUR EFFECTS */
+  [class*="backdrop-blur"],
+  [class*="bg-opacity"],
+  .backdrop-blur-sm,
+  .bg-navy-950, 
+  .bg-navy-900, 
+  .bg-navy-800 {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 
@@ -302,11 +320,13 @@ html, body {
 /* Fix for iOS safari overscroll */
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   height: 100%;
   -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 
 /* Fix for mobile tab buttons */
@@ -329,12 +349,20 @@ body {
     display: inline-flex;
     align-items: center;
     word-break: break-all;
+    font-size: 14px;
+    max-width: 100%;
   }
   
-  a[href^="mailto:"] span {
-    max-width: calc(100% - 24px);
-    overflow: hidden;
-    text-overflow: ellipsis;
+  /* Fix overflow issues */
+  .overflow-hidden {
+    overflow: hidden !important;
+  }
+  
+  /* Ensure all images load properly */
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
   }
 }
 
