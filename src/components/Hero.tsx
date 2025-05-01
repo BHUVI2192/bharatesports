@@ -57,6 +57,13 @@ const Hero = () => {
     };
   }, [api]);
 
+  // Special style for mobile to force solid backgrounds
+  const overlayStyle = isMobile ? {
+    backgroundImage: 'none',
+    backgroundColor: '#0f172a',
+    opacity: 0.85
+  } : {};
+
   return (
     <div className="relative min-h-[92vh] overflow-hidden">
       {/* Full-screen carousel background */}
@@ -77,9 +84,14 @@ const Hero = () => {
           </CarouselContent>
         </Carousel>
         
-        {/* Dark overlay with pattern */}
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/60 to-navy-950/80 z-10">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
+        {/* Dark overlay with pattern - with solid color on mobile */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-navy-950/60 to-navy-950/80 z-10"
+          style={overlayStyle}
+        >
+          {!isMobile && (
+            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
+          )}
         </div>
       </div>
       
@@ -100,7 +112,7 @@ const Hero = () => {
               <span className="block text-blue-500 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
             
-            <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in backdrop-blur-sm bg-navy-950/20 p-2 md:p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
+            <p className={`text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in ${isMobile ? 'bg-navy-950-solid p-2 md:p-4 rounded-lg' : 'backdrop-blur-sm bg-navy-950/20 p-2 md:p-4 rounded-lg'}`} style={{ animationDelay: "0.6s", ...(isMobile ? { backgroundColor: '#0a101f' } : {}) }}>
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
             
@@ -140,8 +152,11 @@ const Hero = () => {
           ].map((item, index) => (
             <div 
               key={index}
-              className="bg-navy-800/30 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: item.delay }}
+              className={`${isMobile ? 'bg-navy-800-solid' : 'bg-navy-800/30 backdrop-blur-sm'} p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in`}
+              style={{ 
+                animationDelay: item.delay,
+                ...(isMobile ? { backdropFilter: 'none', WebkitBackdropFilter: 'none', backgroundColor: '#1e293b' } : {})
+              }}
             >
               <h3 className="text-lg md:text-xl font-bold text-white mb-2">{item.title}</h3>
               <p className="text-sm md:text-base text-gray-300">{item.description}</p>

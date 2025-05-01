@@ -80,6 +80,7 @@ export default {
 					900: '#0f172a',
 					'900-solid': '#0f172a',
 					950: '#020617',
+					'950-solid': '#0a101f',
 				},
 			},
 			borderRadius: {

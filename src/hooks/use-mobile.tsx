@@ -13,13 +13,28 @@ export function useIsMobile() {
 
   React.useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+      const mobileDevice = window.innerWidth < MOBILE_BREAKPOINT;
+      setIsMobile(mobileDevice)
       
-      // Force remove any blur styles when on mobile
-      if (window.innerWidth < MOBILE_BREAKPOINT) {
+      // Force remove ALL blur styles when on mobile
+      if (mobileDevice) {
         document.documentElement.classList.add('mobile-device');
+        
+        // Force solid backgrounds and remove all blurs
+        document.documentElement.style.setProperty('--background-opacity', '1');
+        document.documentElement.style.setProperty('--blur-amount', '0');
+        
+        // Apply inline styles to force solid backgrounds for specific elements
+        const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"]');
+        elementsWithBlur.forEach((el: Element) => {
+          (el as HTMLElement).style.backdropFilter = 'none';
+          (el as HTMLElement).style.WebkitBackdropFilter = 'none';
+          (el as HTMLElement).style.backgroundColor = '#0f172a';
+        });
       } else {
         document.documentElement.classList.remove('mobile-device');
+        document.documentElement.style.removeProperty('--background-opacity');
+        document.documentElement.style.removeProperty('--blur-amount');
       }
     }
     
@@ -53,12 +68,26 @@ export function useDeviceType(): DeviceType {
       if (width < MOBILE_BREAKPOINT) {
         setDeviceType('mobile')
         document.documentElement.classList.add('mobile-device');
+        
+        // Force solid backgrounds with no transparency
+        document.body.classList.add('mobile-solid-bg');
+        
+        // Apply direct styles to elements with blur
+        const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"], [class*="bg-gradient"], .bg-navy-950, .bg-navy-900, .bg-navy-800');
+        elementsWithBlur.forEach((el: Element) => {
+          (el as HTMLElement).style.backdropFilter = 'none';
+          (el as HTMLElement).style.WebkitBackdropFilter = 'none';
+          (el as HTMLElement).style.backgroundImage = 'none';
+        });
+        
       } else if (width < TABLET_BREAKPOINT) {
         setDeviceType('tablet')
         document.documentElement.classList.remove('mobile-device');
+        document.body.classList.remove('mobile-solid-bg');
       } else {
         setDeviceType('desktop')
         document.documentElement.classList.remove('mobile-device');
+        document.body.classList.remove('mobile-solid-bg');
       }
     }
 

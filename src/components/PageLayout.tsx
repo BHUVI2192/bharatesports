@@ -20,17 +20,21 @@ const PageLayout = ({
   const deviceType = useDeviceType();
   const isMobile = deviceType === 'mobile';
 
-  // Use solid background colors always on mobile
-  const headerBgClass = isMobile ? "bg-navy-950" : "bg-navy-900";
+  // Use solid colors with no transparency for mobile
+  const headerBgClass = isMobile ? "bg-navy-900-solid" : "bg-navy-900";
+  const contentBgClass = isMobile ? "bg-navy-950-solid" : bgColor;
   
   // Apply mobile-specific styling
   const mobileClass = isMobile ? "mobile-view" : "";
 
   return (
-    <div className={`min-h-screen w-full ${bgColor} text-white ${mobileClass}`}>
+    <div className={`min-h-screen w-full ${contentBgClass} text-white ${mobileClass}`} style={isMobile ? {backgroundColor: '#0a101f'} : {}}>
       <Navbar />
       
-      <div className={`pt-16 pb-6 md:pt-24 md:pb-10 lg:pt-28 ${headerBgClass}`}>
+      <div 
+        className={`pt-16 pb-6 md:pt-24 md:pb-10 lg:pt-28 ${headerBgClass}`} 
+        style={isMobile ? {backgroundColor: '#0f172a', backdropFilter: 'none'} : {}}
+      >
         <div className="container-custom text-center px-4">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3">{title}</h1>
           {subtitle && <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto">{subtitle}</p>}

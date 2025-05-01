@@ -101,15 +101,55 @@ html, body {
   position: relative;
 }
 
-/* Special class for mobile devices - COMPLETE BLUR REMOVAL */
+/* COMPLETE OVERRIDES FOR MOBILE */
+/* Force solid backgrounds without any transparency on mobile */
+.mobile-solid-bg *,
 .mobile-device * {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  background-attachment: scroll !important;
+  -webkit-background-attachment: scroll !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.mobile-device [class*="backdrop-blur"],
+.mobile-device [class*="bg-navy"],
+.mobile-device [class*="bg-opacity"],
+.mobile-device [class*="bg-gradient"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-image: none !important;
+}
+
+/* Special class for mobile view */
+.mobile-view {
+  /* Hard overrides for Safari mobile */
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
 }
 
 .mobile-view * {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+}
+
+.mobile-view .bg-navy-950,
+.mobile-view [class*="bg-navy-950"] {
+  background-color: #0a101f !important;
+  background-image: none !important;
+}
+
+.mobile-view .bg-navy-900,
+.mobile-view [class*="bg-navy-900"] {
+  background-color: #0f172a !important;
+  background-image: none !important;
+}
+
+.mobile-view .bg-navy-800,
+.mobile-view [class*="bg-navy-800"] {
+  background-color: #1e293b !important;
+  background-image: none !important;
 }
 
 /* Fix for fixed position elements on iOS */
@@ -120,22 +160,35 @@ html, body {
     left: 0;
     right: 0;
   }
+  
+  /* EXTREME OVERRIDE FOR SAFARI */
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 }
 
 /* Improved touch targets for mobile */
 @media (max-width: 768px) {
-  button, a {
-    min-height: 36px;
-    min-width: 36px;
+  /* Force SOLID backgrounds for mobile */
+  html, body, #root, [class*="bg-navy"], [class*="backdrop-blur"], [class*="bg-opacity"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-attachment: scroll !important;
   }
   
-  /* Improved mobile form spacing */
-  input, select, textarea {
-    margin-bottom: 0.75rem;
-    font-size: 16px;
+  .bg-navy-950 {
+    background-color: #0a101f !important;
   }
   
-  /* Better mobile text size */
+  .bg-navy-900 {
+    background-color: #0f172a !important;
+  }
+  
+  .bg-navy-800 {
+    background-color: #1e293b !important;
+  }
+  
   body {
     font-size: 15px;
   }
@@ -150,16 +203,6 @@ html, body {
   img {
     max-width: 100%;
     height: auto;
-  }
-
-  /* Improve card padding on mobile */
-  .card {
-    padding: 1rem;
-  }
-  
-  /* Fix for dropdown menus on mobile */
-  .absolute {
-    max-width: 90vw;
   }
   
   /* COMPLETELY REMOVE ALL BLUR EFFECTS FROM MOBILE */
@@ -190,15 +233,6 @@ html, body {
     background-color: #1e293b !important;
   }
   
-  /* No transparency for tab components */
-  .TabsTrigger,
-  .TabsList,
-  .TabsContent {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background-color: #1e293b !important;
-  }
-  
   /* Force all cards to have solid backgrounds */
   .Card,
   .card,
@@ -214,6 +248,11 @@ html, body {
     background: #0f172a !important;
     background-image: none !important;
   }
+  
+  /* Complete override for any element using bg-opacity */
+  [class*="bg-opacity"] {
+    --tw-bg-opacity: 1 !important;
+  }
 }
 
 /* Mobile specific fixes */
@@ -223,36 +262,15 @@ html, body {
     padding-right: 0.75rem;
   }
   
-  /* Smaller content padding on very small screens */
-  .section-padding {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
-  
-  /* Ensure proper sizing of interactive elements */
-  button, 
-  a.button, 
-  input[type="submit"] {
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
-    min-height: 44px;
-  }
-  
-  /* Improve text legibility on small screens */
-  h1, h2, h3 {
-    letter-spacing: -0.01em;
-  }
-
-  /* REMOVE ALL BLURS COMPLETELY */
-  .backdrop-blur-sm,
-  .bg-navy-950, 
-  .bg-navy-900, 
-  .bg-navy-800,
+  /* Completely disable all backdrop filters */
+  *, *::before, *::after, 
   [class*="backdrop-blur"],
-  [class*="bg-opacity"] {
+  [class*="bg-opacity"],
+  [class*="bg-gradient"],
+  [class*="bg-navy"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    background-attachment: scroll;
+    background-attachment: scroll !important;
   }
   
   /* Force solid backgrounds */
@@ -268,46 +286,16 @@ html, body {
     background-color: #1e293b !important;
   }
   
-  /* Improve form elements spacing */
-  form .space-y-6 > div {
-    margin-bottom: 1rem;
-  }
-  
-  /* Better tabs display */
-  .tabs-list {
-    flex-wrap: wrap;
-  }
-  
-  /* Fix header padding */
-  .pt-20 {
-    padding-top: 4rem !important;
-  }
-  
-  /* Fix for tabs on mobile */
-  .TabsTrigger {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.875rem;
-  }
-  
-  /* Fix text overflow on small screens */
-  .truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-width: 100%;
-  }
-  
-  /* Fix email display for mobile */
-  .text-blue-400, 
-  a[href^="mailto:"] {
-    word-break: break-all;
-    overflow-wrap: break-word;
-    display: inline-block;
-    max-width: 100%;
+  /* Fix for Safari mobile */
+  [class*="backdrop-blur"],
+  [class*="bg-opacity"],
+  [class*="bg-gradient"] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }
 
-/* Fix for Safari mobile */
+/* Fix for Safari mobile - extreme override */
 @supports (-webkit-touch-callout: none) {
   .min-h-screen {
     min-height: -webkit-fill-available;
@@ -317,22 +305,33 @@ html, body {
     min-height: -webkit-fill-available;
   }
   
-  /* Disable fixed position for Safari mobile */
-  .fixed {
-    position: absolute;
-  }
-  
-  /* SPECIFIC FIX FOR SAFARI BLUR EFFECTS */
-  [class*="backdrop-blur"],
-  [class*="bg-opacity"],
-  .backdrop-blur-sm,
+  /* MOST IMPORTANT OVERRIDE - FORCES SOLID COLORS ON SAFARI */
+  *, *::before, *::after,
   .bg-navy-950, 
   .bg-navy-900, 
   .bg-navy-800,
-  * {
+  [class*="backdrop-blur"],
+  [class*="bg-opacity"],
+  [class*="bg-blur"],
+  [class*="bg-gradient"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
     background-attachment: scroll !important;
+  }
+  
+  /* Force solid backgrounds with absolutely no transparency */
+  .bg-navy-950, .bg-navy-950-solid, [class*="bg-navy-950"] {
+    background-color: #0a101f !important;
+  }
+  
+  .bg-navy-900, .bg-navy-900-solid, [class*="bg-navy-900"] {
+    background-color: #0f172a !important;
+  }
+  
+  .bg-navy-800, .bg-navy-800-solid, [class*="bg-navy-800"] {
+    background-color: #1e293b !important;
   }
 }
 
@@ -371,6 +370,44 @@ body {
 
 /* Fix for mobile tab buttons */
 @media (max-width: 640px) {
+  button, a {
+    min-height: 36px;
+    min-width: 36px;
+  }
+  
+  /* Improved mobile form spacing */
+  input, select, textarea {
+    margin-bottom: 0.75rem;
+    font-size: 16px;
+  }
+  
+  /* Better mobile text size */
+  body {
+    font-size: 15px;
+  }
+  
+  /* Reduce padding/margins for mobile */
+  .mobile-compact {
+    padding: 0.75rem !important;
+    margin: 0.75rem !important;
+  }
+
+  /* Prevent image overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Improve card padding on mobile */
+  .card {
+    padding: 1rem;
+  }
+  
+  /* Fix for dropdown menus on mobile */
+  .absolute {
+    max-width: 90vw;
+  }
+  
   button[role="tab"] {
     flex: 1;
     white-space: nowrap;
