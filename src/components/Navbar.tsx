@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useIsMobile, useDeviceType } from "@/hooks/use-mobile";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+  const deviceType = useDeviceType();
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -58,16 +59,17 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo area */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center">
-              <span className={`font-bold text-white ${isMobile ? 'text-xl' : 'text-2xl'}`}>
+              <span className={`font-bold text-white ${isMobile ? 'text-lg' : 'text-2xl'}`}>
                 <span className="text-blue-500">BHARAT</span>
                 <span className="text-white">ESPORT</span>
               </span>
             </Link>
           </div>
 
-          {/* Always show horizontal tabs for all devices */}
+          {/* Always show horizontal tabs for desktop */}
           <div className="flex-1 flex justify-center">
             <div className="hidden md:flex items-center space-x-8 mx-auto">
               {navItems.map((item) => (
@@ -104,17 +106,17 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu, show as a horizontal row at the top */}
-      <div className={`md:hidden transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="px-2 pt-2 pb-3 bg-navy-950 flex flex-wrap justify-center gap-2">
+      {/* Mobile menu - horizontal tabs at the top */}
+      <div className={`md:hidden transform transition-all duration-300 ${isOpen ? 'block' : 'hidden'}`}>
+        <div className="px-2 py-2 bg-navy-950 flex flex-row overflow-x-auto justify-start gap-4 whitespace-nowrap">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
+              className={`block px-3 py-2 text-base font-medium ${
                 isActive(item.path)
-                  ? "text-blue-400 bg-navy-900"
-                  : "text-gray-300 hover:bg-navy-900 hover:text-blue-400"
+                  ? "text-blue-400 border-b-2 border-blue-400"
+                  : "text-gray-300"
               }`}
               onClick={closeMenu}
             >
