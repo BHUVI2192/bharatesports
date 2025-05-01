@@ -11,7 +11,7 @@ import { Gamepad } from "lucide-react";
 import { useDeviceType } from "@/hooks/use-mobile";
 
 const Hero = () => {
-  // Gaming/esports themed images
+  // Gaming/esports themed images - same for all devices
   const images = [
     {
       url: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=2940&auto=format&fit=crop",
@@ -38,7 +38,6 @@ const Hero = () => {
   const [api, setApi] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const deviceType = useDeviceType();
-  const isMobile = deviceType === 'mobile';
   
   // Auto-rotate carousel
   useEffect(() => {
@@ -78,11 +77,9 @@ const Hero = () => {
           </CarouselContent>
         </Carousel>
         
-        {/* Dark overlay - consistent between mobile and desktop */}
+        {/* Dark overlay - consistent across all devices */}
         <div className="absolute inset-0 bg-navy-950/80 z-10">
-          {!isMobile && (
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
-          )}
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
         </div>
       </div>
       
@@ -98,14 +95,13 @@ const Hero = () => {
               />
             </div>
             
-            {/* Made consistent for both mobile and desktop */}
+            {/* Consistent styling for both mobile and desktop */}
             <h1 className="font-bold tracking-tight text-4xl md:text-5xl lg:text-7xl mt-2 md:mt-0">
               <span className="block text-white mb-1 md:mb-2 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.2s" }}>BHARAT</span>
               <span className="block text-blue-500 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
             
-            {/* Ensure consistent styling for both mobile and desktop */}
-            <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in bg-navy-950/80 p-2 md:p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
+            <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in rounded-lg" style={{ animationDelay: "0.6s" }}>
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
             
@@ -145,7 +141,7 @@ const Hero = () => {
           ].map((item, index) => (
             <div 
               key={index}
-              className="bg-navy-800/80 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in"
+              className="bg-navy-800 p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in"
               style={{ animationDelay: item.delay }}
             >
               <h3 className="text-lg md:text-xl font-bold text-white mb-2">{item.title}</h3>

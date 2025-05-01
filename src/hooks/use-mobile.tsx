@@ -13,30 +13,7 @@ export function useIsMobile() {
 
   React.useEffect(() => {
     const checkMobile = () => {
-      const mobileDevice = window.innerWidth < MOBILE_BREAKPOINT;
-      setIsMobile(mobileDevice)
-      
-      // Force remove ALL blur styles when on mobile but maintain consistent background images
-      if (mobileDevice) {
-        document.documentElement.classList.add('mobile-device');
-        
-        // Force solid backgrounds but maintain the general appearance
-        document.documentElement.style.setProperty('--background-opacity', '0.8');
-        document.documentElement.style.setProperty('--blur-amount', '0');
-        
-        // Apply consistent styles across both views
-        const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"]');
-        elementsWithBlur.forEach((el: Element) => {
-          (el as HTMLElement).style.backdropFilter = 'none';
-          // Fix the TypeScript error by using the correct property name
-          (el as HTMLElement).style.backdropFilter = 'none';
-          (el as HTMLElement).style.backgroundColor = '#0f172a';
-        });
-      } else {
-        document.documentElement.classList.remove('mobile-device');
-        document.documentElement.style.removeProperty('--background-opacity');
-        document.documentElement.style.removeProperty('--blur-amount');
-      }
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
     }
     
     // Set initial value
@@ -68,28 +45,10 @@ export function useDeviceType(): DeviceType {
       const width = window.innerWidth
       if (width < MOBILE_BREAKPOINT) {
         setDeviceType('mobile')
-        document.documentElement.classList.add('mobile-device');
-        
-        // Force solid backgrounds but maintain consistent appearance with desktop
-        document.body.classList.add('mobile-consistent-bg');
-        
-        // Apply consistent styles that match desktop view
-        const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"], [class*="bg-gradient"], .bg-navy-950, .bg-navy-900, .bg-navy-800');
-        elementsWithBlur.forEach((el: Element) => {
-          (el as HTMLElement).style.backdropFilter = 'none';
-          // Fix the TypeScript error by using the correct property name
-          (el as HTMLElement).style.backdropFilter = 'none';
-          (el as HTMLElement).style.backgroundImage = 'none';
-        });
-        
       } else if (width < TABLET_BREAKPOINT) {
         setDeviceType('tablet')
-        document.documentElement.classList.remove('mobile-device');
-        document.body.classList.remove('mobile-consistent-bg');
       } else {
         setDeviceType('desktop')
-        document.documentElement.classList.remove('mobile-device');
-        document.body.classList.remove('mobile-consistent-bg');
       }
     }
 

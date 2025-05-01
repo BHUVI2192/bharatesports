@@ -13,7 +13,6 @@ import { useDeviceType } from '@/hooks/use-mobile';
 
 const Index = () => {
   const deviceType = useDeviceType();
-  const isMobile = deviceType === 'mobile';
   
   const sections = [
     {

@@ -20,15 +20,12 @@ const PageLayout = ({
   const deviceType = useDeviceType();
   const isMobile = deviceType === 'mobile';
 
-  // Use consistent styling for both mobile and desktop
+  // Use consistent styling for both mobile and desktop - remove any conditional styling
   const headerBgClass = "bg-navy-900";
   const contentBgClass = bgColor;
   
-  // Apply consistent styling regardless of device
-  const mobileClass = isMobile ? "mobile-view" : "";
-
   return (
-    <div className={`min-h-screen w-full ${contentBgClass} text-white ${mobileClass}`}>
+    <div className={`min-h-screen w-full ${contentBgClass} text-white`}>
       <Navbar />
       
       <div className={`pt-16 pb-6 md:pt-24 md:pb-10 lg:pt-28 ${headerBgClass}`}>
