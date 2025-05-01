@@ -28,7 +28,8 @@ export function useIsMobile() {
         const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"]');
         elementsWithBlur.forEach((el: Element) => {
           (el as HTMLElement).style.backdropFilter = 'none';
-          (el as HTMLElement).style.WebkitBackdropFilter = 'none';
+          // Fix the TypeScript error by using the correct property name
+          (el as HTMLElement).style.backdropFilter = 'none';
           (el as HTMLElement).style.backgroundColor = '#0f172a';
         });
       } else {
@@ -76,7 +77,8 @@ export function useDeviceType(): DeviceType {
         const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"], [class*="bg-gradient"], .bg-navy-950, .bg-navy-900, .bg-navy-800');
         elementsWithBlur.forEach((el: Element) => {
           (el as HTMLElement).style.backdropFilter = 'none';
-          (el as HTMLElement).style.WebkitBackdropFilter = 'none';
+          // Fix the TypeScript error by using the correct property name
+          (el as HTMLElement).style.backdropFilter = 'none';
           (el as HTMLElement).style.backgroundImage = 'none';
         });
         
