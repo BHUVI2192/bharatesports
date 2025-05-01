@@ -152,8 +152,11 @@ html, body {
     max-width: 90vw;
   }
   
-  /* Remove blur effects from mobile */
-  .bg-navy-950, .bg-navy-900, .bg-navy-800, .backdrop-blur-sm {
+  /* Remove blur effects from mobile - IMPORTANT FIX */
+  .backdrop-blur-sm, 
+  .bg-navy-950, 
+  .bg-navy-900, 
+  .bg-navy-800 {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
@@ -208,9 +211,13 @@ html, body {
   }
 
   /* Fix for blurry backgrounds - REMOVE BLUR COMPLETELY */
-  .backdrop-blur-sm {
+  .backdrop-blur-sm,
+  .bg-navy-950, 
+  .bg-navy-900, 
+  .bg-navy-800 {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    background-attachment: scroll;
   }
   
   /* Improve form elements spacing */
@@ -242,9 +249,16 @@ html, body {
     max-width: 100%;
   }
   
-  /* Ensure proper alignment for email addresses in team section */
+  /* Ensure proper alignment for email addresses */
   .text-blue-400 {
     word-break: break-word;
+  }
+  
+  /* Fix long email display */
+  a[href^="mailto:"] {
+    word-break: break-all;
+    display: inline-block;
+    max-width: 100%;
   }
 }
 
@@ -256,6 +270,11 @@ html, body {
   
   body {
     min-height: -webkit-fill-available;
+  }
+  
+  /* Disable fixed position for Safari mobile */
+  .fixed {
+    position: absolute;
   }
 }
 
@@ -299,13 +318,6 @@ body {
     font-size: 0.875rem;
   }
   
-  /* Remove blur effect on mobile */
-  .bg-navy-950, .bg-navy-900, .bg-navy-800 {
-    background-attachment: scroll;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-  
   /* Fix for containers on small screens */
   .container-custom {
     width: 100% !important;
@@ -326,7 +338,7 @@ body {
   }
 }
 
-/* Fix for mobility email display */
+/* Fix for mobile email display */
 @media (max-width: 360px) {
   a[href^="mailto:"] {
     font-size: 12px;

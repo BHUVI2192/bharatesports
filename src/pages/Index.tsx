@@ -9,8 +9,12 @@ import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
+import { useDeviceType } from '@/hooks/use-mobile';
 
 const Index = () => {
+  const deviceType = useDeviceType();
+  const isMobile = deviceType === 'mobile';
+  
   const sections = [
     {
       id: "news",
@@ -42,7 +46,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-navy-950 text-white">
+    <div className="min-h-screen bg-navy-950 text-white w-full">
       <Navbar />
       <Hero />
       

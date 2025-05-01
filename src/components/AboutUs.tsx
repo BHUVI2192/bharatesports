@@ -9,8 +9,8 @@ const AboutUs = () => {
   const isMobile = deviceType === 'mobile';
   
   return (
-    <section id="about" className="section-padding bg-navy-950" style={{ backdropFilter: 'none', WebkitBackdropFilter: 'none' }}>
-      <div className="container-custom" style={{ overflow: 'hidden' }}>
+    <section id="about" className="section-padding bg-navy-950">
+      <div className="container-custom">
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
             <span className="text-white">ABOUT</span>{" "}
@@ -19,8 +19,8 @@ const AboutUs = () => {
           <div className="w-20 md:w-24 h-1 bg-blue-500 mx-auto mb-4 md:mb-6"></div>
         </div>
         
-        <Card className="bg-navy-800 border border-navy-700 overflow-hidden" style={{ backdropFilter: 'none' }}>
-          <CardContent className={`p-${isMobile ? '4' : '6'} md:p-8 lg:p-10`}>
+        <Card className="bg-navy-800 border border-navy-700">
+          <CardContent className="p-4 md:p-8 lg:p-10">
             <div>
               <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 md:gap-8 mb-6 md:mb-8">
                 <div className="w-full md:w-1/3 flex justify-center">
@@ -50,7 +50,7 @@ const AboutUs = () => {
                     <Trophy className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
                   </div>
                   <h4 className="text-lg md:text-xl font-semibold mb-2 text-white">Elite Competitions</h4>
-                  <p className="text-gray-400 text-sm md:text-base">Organizing high-stakes tournaments across multiple game titles with substantial prize pools</p>
+                  <p className="text-gray-400 text-sm md:text-base">Organizing high-stakes tournaments across multiple game titles with substantial prize pools of ₹200K</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900/70 rounded-lg border border-navy-700">
@@ -58,7 +58,7 @@ const AboutUs = () => {
                     <Users className="h-5 w-5 md:h-6 md:w-6 text-blue-400" />
                   </div>
                   <h4 className="text-lg md:text-xl font-semibold mb-2 text-white">Community First</h4>
-                  <p className="text-gray-400 text-sm md:text-base">Building a supportive network of players, creators, and fans united by their passion for gaming</p>
+                  <p className="text-gray-400 text-sm md:text-base">Building a supportive network of 27K+ players, creators, and fans united by their passion for gaming</p>
                 </div>
                 
                 <div className="flex flex-col items-center text-center p-4 md:p-6 bg-navy-900/70 rounded-lg border border-navy-700 sm:col-span-2 md:col-span-1">
@@ -67,6 +67,33 @@ const AboutUs = () => {
                   </div>
                   <h4 className="text-lg md:text-xl font-semibold mb-2 text-white">Future of Gaming</h4>
                   <p className="text-gray-400 text-sm md:text-base">Promoting professional gaming as a viable career path for talented players across India</p>
+                </div>
+              </div>
+              
+              <div className="mt-8 md:mt-10">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center text-white">Our Team</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-navy-900/70 p-4 md:p-6 rounded-lg border border-navy-700">
+                    <h4 className="text-lg md:text-xl font-semibold mb-2 text-white text-center md:text-left">Founder</h4>
+                    <p className="text-gray-400 text-sm md:text-base mb-2 text-center md:text-left">Leading our vision and strategy</p>
+                    <div className="flex items-center justify-center md:justify-start">
+                      <span className="text-blue-400 mr-2">Email:</span>
+                      <a href="mailto:Shahulshaik02405@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm md:text-base break-all">
+                        Shahulshaik02405@gmail.com
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-navy-900/70 p-4 md:p-6 rounded-lg border border-navy-700">
+                    <h4 className="text-lg md:text-xl font-semibold mb-2 text-white text-center md:text-left">Co-Founder</h4>
+                    <p className="text-gray-400 text-sm md:text-base mb-2 text-center md:text-left">Overseeing operations and community</p>
+                    <div className="flex items-center justify-center md:justify-start">
+                      <span className="text-blue-400 mr-2">Email:</span>
+                      <a href="mailto:cnbhuvan011@gmail.com" className="text-gray-300 hover:text-blue-400 transition-colors duration-200 text-sm md:text-base break-all">
+                        cnbhuvan011@gmail.com
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
