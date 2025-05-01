@@ -20,11 +20,14 @@ const PageLayout = ({
   const deviceType = useDeviceType();
   const isMobile = deviceType === 'mobile';
 
-  // Use solid background colors on mobile instead of backgrounds that might use blur
+  // Use solid background colors always on mobile
   const headerBgClass = isMobile ? "bg-navy-950" : "bg-navy-900";
+  
+  // Apply mobile-specific styling
+  const mobileClass = isMobile ? "mobile-view" : "";
 
   return (
-    <div className={`min-h-screen w-full ${bgColor} text-white`}>
+    <div className={`min-h-screen w-full ${bgColor} text-white ${mobileClass}`}>
       <Navbar />
       
       <div className={`pt-16 pb-6 md:pt-24 md:pb-10 lg:pt-28 ${headerBgClass}`}>

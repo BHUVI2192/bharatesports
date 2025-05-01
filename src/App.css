@@ -1,4 +1,3 @@
-
 #root {
   width: 100%;
   margin: 0 auto;
@@ -102,6 +101,17 @@ html, body {
   position: relative;
 }
 
+/* Special class for mobile devices - COMPLETE BLUR REMOVAL */
+.mobile-device * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.mobile-view * {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* Fix for fixed position elements on iOS */
 @supports (-webkit-touch-callout: none) {
   .fixed {
@@ -158,10 +168,13 @@ html, body {
   .bg-navy-900, 
   .bg-navy-800,
   [class*="backdrop-blur"],
-  [class*="bg-opacity"] {
+  [class*="bg-opacity"],
+  *[class*="backdrop-"],
+  div[class*="blur"] {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    background-attachment: scroll;
+    background-attachment: scroll !important;
+    -webkit-background-attachment: scroll !important;
   }
   
   /* Force solid backgrounds without any transparency */
@@ -175,6 +188,31 @@ html, body {
   
   .bg-navy-800 {
     background-color: #1e293b !important;
+  }
+  
+  /* No transparency for tab components */
+  .TabsTrigger,
+  .TabsList,
+  .TabsContent {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: #1e293b !important;
+  }
+  
+  /* Force all cards to have solid backgrounds */
+  .Card,
+  .card,
+  [class*="Card"],
+  .bg-navy-900\/70 {
+    background-color: #1e293b !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Force all gradients to be simple solid colors */
+  [class*="bg-gradient"] {
+    background: #0f172a !important;
+    background-image: none !important;
   }
 }
 
@@ -290,9 +328,11 @@ html, body {
   .backdrop-blur-sm,
   .bg-navy-950, 
   .bg-navy-900, 
-  .bg-navy-800 {
+  .bg-navy-800,
+  * {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    background-attachment: scroll !important;
   }
 }
 
@@ -370,5 +410,13 @@ body {
 @media (max-width: 360px) {
   a[href^="mailto:"] {
     font-size: 12px;
+  }
+}
+
+/* Additional fixes for iOS devices */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  * {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 }

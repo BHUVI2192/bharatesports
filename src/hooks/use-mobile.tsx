@@ -14,6 +14,13 @@ export function useIsMobile() {
   React.useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
+      
+      // Force remove any blur styles when on mobile
+      if (window.innerWidth < MOBILE_BREAKPOINT) {
+        document.documentElement.classList.add('mobile-device');
+      } else {
+        document.documentElement.classList.remove('mobile-device');
+      }
     }
     
     // Set initial value
@@ -45,10 +52,13 @@ export function useDeviceType(): DeviceType {
       const width = window.innerWidth
       if (width < MOBILE_BREAKPOINT) {
         setDeviceType('mobile')
+        document.documentElement.classList.add('mobile-device');
       } else if (width < TABLET_BREAKPOINT) {
         setDeviceType('tablet')
+        document.documentElement.classList.remove('mobile-device');
       } else {
         setDeviceType('desktop')
+        document.documentElement.classList.remove('mobile-device');
       }
     }
 

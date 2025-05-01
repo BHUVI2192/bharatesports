@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
@@ -10,13 +9,17 @@ const AboutPage = () => {
   const deviceType = useDeviceType();
   const isMobile = deviceType === 'mobile';
   
+  // Force solid backgrounds on mobile for all cards
+  const cardBgClass = isMobile ? "bg-navy-800-solid" : "bg-navy-800";
+  const innerCardBgClass = isMobile ? "bg-navy-900-solid" : "bg-navy-900/70";
+  
   return (
     <PageLayout 
       title="ABOUT US" 
       subtitle="India's premier gaming community, dedicated to elevating the esports ecosystem"
     >
       <Tabs defaultValue="about" className="w-full">
-        <TabsList className="flex w-full h-auto mb-8 bg-navy-900">
+        <TabsList className={`flex w-full h-auto mb-8 ${isMobile ? 'bg-navy-900-solid' : 'bg-navy-900'}`}>
           <TabsTrigger 
             value="about"
             className="flex-grow data-[state=active]:bg-blue-500/20 data-[state=active]:text-blue-400"
@@ -39,7 +42,7 @@ const AboutPage = () => {
         
         {/* About Section */}
         <TabsContent value="about" className="mt-0">
-          <Card className="bg-navy-800 border border-navy-700 overflow-hidden mb-8">
+          <Card className={`${cardBgClass} border border-navy-700 overflow-hidden mb-8`}>
             <CardContent className="p-8 md:p-10">
               <div className="mb-10">
                 <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 mb-8">
@@ -68,7 +71,7 @@ const AboutPage = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                  <div className="flex flex-col items-center text-center p-6 bg-navy-900/70 rounded-lg border border-navy-700">
+                  <div className={`flex flex-col items-center text-center p-6 ${innerCardBgClass} rounded-lg border border-navy-700`}>
                     <div className="p-3 rounded-full bg-blue-500/20 mb-4">
                       <Trophy className="h-6 w-6 text-blue-400" />
                     </div>
@@ -76,7 +79,7 @@ const AboutPage = () => {
                     <p className="text-gray-400">Organizing high-stakes tournaments across multiple game titles with substantial prize pools</p>
                   </div>
                   
-                  <div className="flex flex-col items-center text-center p-6 bg-navy-900/70 rounded-lg border border-navy-700">
+                  <div className={`flex flex-col items-center text-center p-6 ${innerCardBgClass} rounded-lg border border-navy-700`}>
                     <div className="p-3 rounded-full bg-blue-500/20 mb-4">
                       <Users className="h-6 w-6 text-blue-400" />
                     </div>
@@ -84,7 +87,7 @@ const AboutPage = () => {
                     <p className="text-gray-400">Building a supportive network of players, creators, and fans united by their passion for gaming</p>
                   </div>
                   
-                  <div className="flex flex-col items-center text-center p-6 bg-navy-900/70 rounded-lg border border-navy-700">
+                  <div className={`flex flex-col items-center text-center p-6 ${innerCardBgClass} rounded-lg border border-navy-700`}>
                     <div className="p-3 rounded-full bg-blue-500/20 mb-4">
                       <Gamepad className="h-6 w-6 text-blue-400" />
                     </div>
@@ -96,7 +99,7 @@ const AboutPage = () => {
             </CardContent>
           </Card>
           
-          <div className="bg-navy-800 border border-navy-700 rounded-lg p-8 mt-8">
+          <div className={`${cardBgClass} border border-navy-700 rounded-lg p-8 mt-8`}>
             <h3 className="text-2xl font-bold mb-6 text-center text-white">Our Impact</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div className="p-4">
@@ -121,7 +124,7 @@ const AboutPage = () => {
         
         {/* Mission Section */}
         <TabsContent value="mission" className="mt-0">
-          <Card className="bg-navy-800 border border-navy-700 overflow-hidden">
+          <Card className={`${cardBgClass} border border-navy-700 overflow-hidden`}>
             <CardContent className="p-8 md:p-10">
               <div className="text-center mb-8">
                 <h3 className="text-3xl font-bold mb-4 text-white">Our Mission</h3>
@@ -184,7 +187,7 @@ const AboutPage = () => {
                 </div>
               </div>
               
-              <div className="mt-12 p-6 bg-blue-500/10 rounded-lg border border-blue-500/20">
+              <div className={`mt-12 p-6 ${isMobile ? "bg-blue-900" : "bg-blue-500/10"} rounded-lg border ${isMobile ? "border-blue-800" : "border-blue-500/20"}`}>
                 <h4 className="text-xl font-bold mb-3 text-white">Our Values</h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="p-4">
@@ -207,7 +210,7 @@ const AboutPage = () => {
         
         {/* Team Section */}
         <TabsContent value="team" className="mt-0">
-          <Card className="bg-navy-800 border border-navy-700 overflow-hidden mb-8">
+          <Card className={`${cardBgClass} border border-navy-700 overflow-hidden mb-8`}>
             <CardContent className="p-8 md:p-10">
               <div className="text-center mb-12">
                 <h3 className="text-3xl font-bold mb-4 text-white">Leadership Team</h3>
@@ -233,7 +236,7 @@ const AboutPage = () => {
                     email: "cnbhuvan011@gmail.com"
                   }
                 ].map((member, index) => (
-                  <div key={index} className="bg-navy-900 p-6 rounded-lg border border-navy-700">
+                  <div key={index} className={`${innerCardBgClass} p-6 rounded-lg border border-navy-700`}>
                     <div className="w-20 h-20 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
                       <span className="text-2xl text-blue-400 font-bold">
                         {member.name.split(' ').map(n => n[0]).join('')}
@@ -266,7 +269,7 @@ const AboutPage = () => {
             </CardContent>
           </Card>
           
-          <div className="bg-navy-800 border border-navy-700 rounded-lg p-8 mt-8">
+          <div className={`${cardBgClass} border border-navy-700 rounded-lg p-8 mt-8`}>
             <h3 className="text-2xl font-bold mb-6 text-center text-white">Connect With Us</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
               <div className="flex items-center justify-center p-4">
