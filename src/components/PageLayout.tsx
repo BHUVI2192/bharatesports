@@ -17,7 +17,7 @@ const PageLayout = ({
   bgColor = "bg-navy-950" 
 }: PageLayoutProps) => {
   return (
-    <div className={`min-h-screen ${bgColor} text-white overflow-x-hidden`}>
+    <div className={`min-h-screen ${bgColor} text-white`}>
       <Navbar />
       
       <div className="pt-16 pb-6 md:pt-24 md:pb-10 lg:pt-28 bg-navy-900">

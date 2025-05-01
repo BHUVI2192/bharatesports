@@ -100,11 +100,11 @@ const AboutPage = () => {
                 <p className="text-gray-300">Tournaments Hosted</p>
               </div>
               <div className="p-4">
-                <p className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">₹1CR+</p>
+                <p className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">₹200K+</p>
                 <p className="text-gray-300">Prize Money Awarded</p>
               </div>
               <div className="p-4">
-                <p className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">1M+</p>
+                <p className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">27K+</p>
                 <p className="text-gray-300">Community Members</p>
               </div>
               <div className="p-4">
@@ -218,13 +218,15 @@ const AboutPage = () => {
                     name: "Shaik Shahul",
                     position: "Founder & CEO",
                     bio: "Visionary leader with extensive experience in esports management and a passion for developing the Indian gaming ecosystem.",
-                    instagram: "https://www.instagram.com/ig_sparkzzz?igsh=c3JhaGZueGhreWpv"
+                    instagram: "https://www.instagram.com/ig_sparkzzz?igsh=c3JhaGZueGhreWpv",
+                    email: "Shahulshaik02405@gmail.com"
                   },
                   {
                     name: "Bhuvan N",
                     position: "Co-founder & Managing Director",
                     bio: "Strategic business developer focused on expanding Bharat Esports' reach and creating opportunities for players across India.",
-                    instagram: "https://www.instagram.com/damn_itx.bhuvi?igsh=MWZzN3Z5MHU0anVwaA=="
+                    instagram: "https://www.instagram.com/damn_itx.bhuvi?igsh=MWZzN3Z5MHU0anVwaA==",
+                    email: "cnbhuvan011@gmail.com"
                   }
                 ].map((member, index) => (
                   <div key={index} className="bg-navy-900 p-6 rounded-lg border border-navy-700">
@@ -236,15 +238,22 @@ const AboutPage = () => {
                     <h4 className="text-lg font-bold text-white text-center mb-1">{member.name}</h4>
                     <p className="text-blue-400 text-sm text-center mb-3">{member.position}</p>
                     <p className="text-gray-400 text-sm text-center mb-4">{member.bio}</p>
-                    <div className="flex justify-center">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                       <a 
                         href={member.instagram} 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
                       >
-                        <Instagram className="h-5 w-5" />
-                        <span>Follow on Instagram</span>
+                        <Instagram className="h-4 w-4" />
+                        <span>Instagram</span>
+                      </a>
+                      <a 
+                        href={`mailto:${member.email}`}
+                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                      >
+                        <Mail className="h-4 w-4" />
+                        <span>{member.email}</span>
                       </a>
                     </div>
                   </div>
