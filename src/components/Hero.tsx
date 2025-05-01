@@ -1,22 +1,16 @@
 
-import React, { useEffect, useState } from "react";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem
-} from "@/components/ui/carousel";
+import React from "react";
 import { useDeviceType } from "@/hooks/use-mobile";
 
 const Hero = () => {
-  // Single gaming/esports themed image for background
+  // Gaming/esports themed background image
   const backgroundImage = "https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=2940&auto=format&fit=crop";
   
-  const [api, setApi] = useState<any>(null);
   const deviceType = useDeviceType();
 
   return (
     <div className="relative min-h-[92vh] overflow-hidden">
-      {/* Simple background image - no carousel or effects */}
+      {/* Simple background image - no effects */}
       <div className="absolute inset-0 z-0">
         <div className="w-full h-full">
           <img 
@@ -44,8 +38,8 @@ const Hero = () => {
             
             {/* Just the app name - simplified */}
             <h1 className="font-bold tracking-tight text-4xl md:text-5xl lg:text-7xl mt-2 md:mt-0">
-              <span className="block text-white mb-1 md:mb-2 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.2s" }}>BHARAT</span>
-              <span className="block text-blue-500 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
+              <span className="block text-white mb-1 md:mb-2 animate-fade-in" style={{ animationDelay: "0.2s" }}>BHARAT</span>
+              <span className="block text-blue-500 animate-fade-in" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
           </div>
         </div>

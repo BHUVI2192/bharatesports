@@ -45,10 +45,14 @@ export function useDeviceType(): DeviceType {
       const width = window.innerWidth
       if (width < MOBILE_BREAKPOINT) {
         setDeviceType('mobile')
+        // Add class to body for mobile-specific styling without blur
+        document.body.classList.add('mobile-view')
       } else if (width < TABLET_BREAKPOINT) {
         setDeviceType('tablet')
+        document.body.classList.remove('mobile-view')
       } else {
         setDeviceType('desktop')
+        document.body.classList.remove('mobile-view')
       }
     }
 
@@ -56,7 +60,10 @@ export function useDeviceType(): DeviceType {
     handleResize()
 
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      document.body.classList.remove('mobile-view')
+    }
   }, [])
 
   return deviceType

@@ -53,8 +53,8 @@ const Navbar = () => {
   return (
     <nav 
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-navy-950/90 shadow-md" : "bg-transparent"
-      } backdrop-blur-md border-b border-blue-500/20`}
+        isScrolled ? "bg-navy-950" : "bg-navy-950"
+      } border-b border-blue-500/20`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -67,9 +67,9 @@ const Navbar = () => {
             </Link>
           </div>
 
-          {/* Desktop menu */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
+          {/* Always show horizontal tabs for all devices */}
+          <div className="flex-1 flex justify-center">
+            <div className="hidden md:flex items-center space-x-8 mx-auto">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
@@ -104,16 +104,16 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
+      {/* Mobile menu, show as a horizontal row at the top */}
       <div className={`md:hidden transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-navy-950/95 backdrop-blur-md">
+        <div className="px-2 pt-2 pb-3 bg-navy-950 flex flex-wrap justify-center gap-2">
           {navItems.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 isActive(item.path)
-                  ? "text-blue-400 bg-navy-900/50"
+                  ? "text-blue-400 bg-navy-900"
                   : "text-gray-300 hover:bg-navy-900 hover:text-blue-400"
               }`}
               onClick={closeMenu}
