@@ -18,9 +18,8 @@ const PageLayout = ({
   bgColor = "bg-navy-950" 
 }: PageLayoutProps) => {
   const deviceType = useDeviceType();
-  const isMobile = deviceType === 'mobile';
-
-  // Use consistent styling for both mobile and desktop - remove any conditional styling
+  
+  // Use simple solid backgrounds without any effects
   const headerBgClass = "bg-navy-900";
   const contentBgClass = bgColor;
   

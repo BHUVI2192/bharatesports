@@ -9,11 +9,8 @@ import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { useDeviceType } from '@/hooks/use-mobile';
 
 const Index = () => {
-  const deviceType = useDeviceType();
-  
   const sections = [
     {
       id: "news",
