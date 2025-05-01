@@ -8,7 +8,7 @@ import {
   CarouselNext 
 } from "@/components/ui/carousel";
 import { Gamepad } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useDeviceType } from "@/hooks/use-mobile";
 
 const Hero = () => {
   // Gaming/esports themed images
@@ -37,7 +37,8 @@ const Hero = () => {
 
   const [api, setApi] = useState<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const isMobile = useIsMobile();
+  const deviceType = useDeviceType();
+  const isMobile = deviceType === 'mobile';
   
   // Auto-rotate carousel
   useEffect(() => {
@@ -57,16 +58,9 @@ const Hero = () => {
     };
   }, [api]);
 
-  // Special style for mobile to force solid backgrounds
-  const overlayStyle = isMobile ? {
-    backgroundImage: 'none',
-    backgroundColor: '#0f172a',
-    opacity: 0.85
-  } : {};
-
   return (
     <div className="relative min-h-[92vh] overflow-hidden">
-      {/* Full-screen carousel background */}
+      {/* Full-screen carousel background - same for both mobile and desktop */}
       <div className="absolute inset-0 z-0">
         <Carousel className="w-full h-full" opts={{ loop: true, duration: 50 }} setApi={setApi}>
           <CarouselContent className="h-full">
@@ -84,18 +78,15 @@ const Hero = () => {
           </CarouselContent>
         </Carousel>
         
-        {/* Dark overlay with pattern - with solid color on mobile */}
-        <div 
-          className="absolute inset-0 bg-gradient-to-b from-navy-950/60 to-navy-950/80 z-10"
-          style={overlayStyle}
-        >
+        {/* Dark overlay - consistent between mobile and desktop */}
+        <div className="absolute inset-0 bg-navy-950/80 z-10">
           {!isMobile && (
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMTI1MjkiIGZpbGwtb3BhY2l0eT0iMC40Ij48cGF0aCBkPSJNMzYgMzRjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMThjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnptLTE2IDBjMC0xLjEuOS0yIDItMiAxLjEgMCAyIC45IDIgMiAwIDEuMS0uOSAyLTIgMi0xLjEgMC0yLS45LTItMnpNMzYgMmMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yem0tMTYgMGMwLTEuMS45LTIgMi0yIDEuMSAwIDIgLjkgMiAyIDAgMS4xLS45IDItMiAyLTEuMSAwLTItLjktMi0yeiI+PC9wYXRoPjwvZz48L2c+PC9zdmc+')] opacity-10"></div>
           )}
         </div>
       </div>
       
-      {/* Content */}
+      {/* Content - Consistent between mobile and desktop */}
       <div className="container-custom pt-16 md:pt-24 lg:pt-32 pb-16 relative z-20">
         <div className="max-w-4xl mx-auto text-center px-4">
           <div className="space-y-5 md:space-y-8 animate-fade-in">
@@ -107,12 +98,14 @@ const Hero = () => {
               />
             </div>
             
+            {/* Made consistent for both mobile and desktop */}
             <h1 className="font-bold tracking-tight text-4xl md:text-5xl lg:text-7xl mt-2 md:mt-0">
               <span className="block text-white mb-1 md:mb-2 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.2s" }}>BHARAT</span>
               <span className="block text-blue-500 animate-fade-in drop-shadow-md" style={{ animationDelay: "0.4s" }}>ESPORT EXPRESS</span>
             </h1>
             
-            <p className={`text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in ${isMobile ? 'bg-navy-950-solid p-2 md:p-4 rounded-lg' : 'backdrop-blur-sm bg-navy-950/20 p-2 md:p-4 rounded-lg'}`} style={{ animationDelay: "0.6s", ...(isMobile ? { backgroundColor: '#0a101f' } : {}) }}>
+            {/* Ensure consistent styling for both mobile and desktop */}
+            <p className="text-base md:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto animate-fade-in bg-navy-950/80 p-2 md:p-4 rounded-lg" style={{ animationDelay: "0.6s" }}>
               Join India's Ultimate Gaming Arena - Where champions are born and legends rise.
             </p>
             
@@ -152,11 +145,8 @@ const Hero = () => {
           ].map((item, index) => (
             <div 
               key={index}
-              className={`${isMobile ? 'bg-navy-800-solid' : 'bg-navy-800/30 backdrop-blur-sm'} p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in`}
-              style={{ 
-                animationDelay: item.delay,
-                ...(isMobile ? { backdropFilter: 'none', WebkitBackdropFilter: 'none', backgroundColor: '#1e293b' } : {})
-              }}
+              className="bg-navy-800/80 backdrop-blur-sm p-4 md:p-6 rounded-lg border border-blue-500/20 hover:border-blue-500/50 transition-all duration-300 animate-fade-in"
+              style={{ animationDelay: item.delay }}
             >
               <h3 className="text-lg md:text-xl font-bold text-white mb-2">{item.title}</h3>
               <p className="text-sm md:text-base text-gray-300">{item.description}</p>

@@ -16,15 +16,15 @@ export function useIsMobile() {
       const mobileDevice = window.innerWidth < MOBILE_BREAKPOINT;
       setIsMobile(mobileDevice)
       
-      // Force remove ALL blur styles when on mobile
+      // Force remove ALL blur styles when on mobile but maintain consistent background images
       if (mobileDevice) {
         document.documentElement.classList.add('mobile-device');
         
-        // Force solid backgrounds and remove all blurs
-        document.documentElement.style.setProperty('--background-opacity', '1');
+        // Force solid backgrounds but maintain the general appearance
+        document.documentElement.style.setProperty('--background-opacity', '0.8');
         document.documentElement.style.setProperty('--blur-amount', '0');
         
-        // Apply inline styles to force solid backgrounds for specific elements
+        // Apply consistent styles across both views
         const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"]');
         elementsWithBlur.forEach((el: Element) => {
           (el as HTMLElement).style.backdropFilter = 'none';
@@ -70,10 +70,10 @@ export function useDeviceType(): DeviceType {
         setDeviceType('mobile')
         document.documentElement.classList.add('mobile-device');
         
-        // Force solid backgrounds with no transparency
-        document.body.classList.add('mobile-solid-bg');
+        // Force solid backgrounds but maintain consistent appearance with desktop
+        document.body.classList.add('mobile-consistent-bg');
         
-        // Apply direct styles to elements with blur
+        // Apply consistent styles that match desktop view
         const elementsWithBlur = document.querySelectorAll('[class*="backdrop-blur"], [class*="bg-opacity"], [class*="bg-gradient"], .bg-navy-950, .bg-navy-900, .bg-navy-800');
         elementsWithBlur.forEach((el: Element) => {
           (el as HTMLElement).style.backdropFilter = 'none';
@@ -85,11 +85,11 @@ export function useDeviceType(): DeviceType {
       } else if (width < TABLET_BREAKPOINT) {
         setDeviceType('tablet')
         document.documentElement.classList.remove('mobile-device');
-        document.body.classList.remove('mobile-solid-bg');
+        document.body.classList.remove('mobile-consistent-bg');
       } else {
         setDeviceType('desktop')
         document.documentElement.classList.remove('mobile-device');
-        document.body.classList.remove('mobile-solid-bg');
+        document.body.classList.remove('mobile-consistent-bg');
       }
     }
 
