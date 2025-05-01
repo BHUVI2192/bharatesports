@@ -2,11 +2,15 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Users, Gamepad } from "lucide-react";
+import { useDeviceType } from '@/hooks/use-mobile';
 
 const AboutUs = () => {
+  const deviceType = useDeviceType();
+  const isMobile = deviceType === 'mobile';
+  
   return (
-    <section id="about" className="section-padding bg-navy-950">
-      <div className="container-custom">
+    <section id="about" className="section-padding bg-navy-950" style={{ backdropFilter: 'none', WebkitBackdropFilter: 'none' }}>
+      <div className="container-custom" style={{ overflow: 'hidden' }}>
         <div className="text-center mb-8 md:mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4">
             <span className="text-white">ABOUT</span>{" "}
@@ -15,8 +19,8 @@ const AboutUs = () => {
           <div className="w-20 md:w-24 h-1 bg-blue-500 mx-auto mb-4 md:mb-6"></div>
         </div>
         
-        <Card className="bg-navy-800 border border-navy-700 overflow-hidden">
-          <CardContent className="p-6 md:p-8 lg:p-10">
+        <Card className="bg-navy-800 border border-navy-700 overflow-hidden" style={{ backdropFilter: 'none' }}>
+          <CardContent className={`p-${isMobile ? '4' : '6'} md:p-8 lg:p-10`}>
             <div>
               <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-6 md:gap-8 mb-6 md:mb-8">
                 <div className="w-full md:w-1/3 flex justify-center">

@@ -4,8 +4,12 @@ import PageLayout from '@/components/PageLayout';
 import { Card, CardContent } from "@/components/ui/card";
 import { Trophy, Users, Gamepad, Calendar, MapPin, Mail, Instagram } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useDeviceType } from "@/hooks/use-mobile";
 
 const AboutPage = () => {
+  const deviceType = useDeviceType();
+  const isMobile = deviceType === 'mobile';
+  
   return (
     <PageLayout 
       title="ABOUT US" 
@@ -238,7 +242,7 @@ const AboutPage = () => {
                     <h4 className="text-lg font-bold text-white text-center mb-1">{member.name}</h4>
                     <p className="text-blue-400 text-sm text-center mb-3">{member.position}</p>
                     <p className="text-gray-400 text-sm text-center mb-4">{member.bio}</p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+                    <div className={`flex flex-col ${isMobile ? '' : 'sm:flex-row'} items-center justify-center gap-3 sm:gap-4`}>
                       <a 
                         href={member.instagram} 
                         target="_blank" 
@@ -250,10 +254,10 @@ const AboutPage = () => {
                       </a>
                       <a 
                         href={`mailto:${member.email}`}
-                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors"
+                        className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors truncate max-w-full"
                       >
-                        <Mail className="h-4 w-4" />
-                        <span>{member.email}</span>
+                        <Mail className="h-4 w-4 flex-shrink-0" />
+                        <span className="truncate">{member.email}</span>
                       </a>
                     </div>
                   </div>
@@ -271,7 +275,7 @@ const AboutPage = () => {
               </div>
               <div className="flex items-center justify-center p-4">
                 <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                <p className="text-gray-300">bharatesports.bgmi@gmail.com</p>
+                <p className="text-gray-300 truncate">bharatesports.bgmi@gmail.com</p>
               </div>
             </div>
           </div>

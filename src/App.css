@@ -151,6 +151,12 @@ html, body {
   .absolute {
     max-width: 90vw;
   }
+  
+  /* Remove blur effects from mobile */
+  .bg-navy-950, .bg-navy-900, .bg-navy-800, .backdrop-blur-sm {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
 }
 
 /* Utility classes for page transitions */
@@ -201,9 +207,10 @@ html, body {
     letter-spacing: -0.01em;
   }
 
-  /* Fix for blurry backgrounds */
+  /* Fix for blurry backgrounds - REMOVE BLUR COMPLETELY */
   .backdrop-blur-sm {
-    backdrop-filter: none;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   
   /* Improve form elements spacing */
@@ -225,6 +232,19 @@ html, body {
   .TabsTrigger {
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
+  }
+  
+  /* Fix text overflow on small screens */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  
+  /* Ensure proper alignment for email addresses in team section */
+  .text-blue-400 {
+    word-break: break-word;
   }
 }
 
@@ -282,12 +302,33 @@ body {
   /* Remove blur effect on mobile */
   .bg-navy-950, .bg-navy-900, .bg-navy-800 {
     background-attachment: scroll;
-    backdrop-filter: none;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   
   /* Fix for containers on small screens */
   .container-custom {
     width: 100% !important;
     overflow-x: hidden !important;
+  }
+  
+  /* Better email display on small screens */
+  a[href^="mailto:"] {
+    display: inline-flex;
+    align-items: center;
+    word-break: break-all;
+  }
+  
+  a[href^="mailto:"] span {
+    max-width: calc(100% - 24px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Fix for mobility email display */
+@media (max-width: 360px) {
+  a[href^="mailto:"] {
+    font-size: 12px;
   }
 }
