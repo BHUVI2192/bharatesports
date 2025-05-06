@@ -1,8 +1,8 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 // Game card component
 const GameCard = ({ title, category }: { title: string; category: string }) => {
@@ -22,6 +22,8 @@ const GameCard = ({ title, category }: { title: string; category: string }) => {
 };
 
 const FeaturedGames = () => {
+  const navigate = useNavigate();
+  
   const games = [
     { id: 1, title: "Speed Racer", category: "Racing" },
     { id: 2, title: "Tactical Strike", category: "FPS" },
@@ -30,6 +32,12 @@ const FeaturedGames = () => {
     { id: 5, title: "Mind Maze", category: "Puzzle" },
     { id: 6, title: "Combat Zone", category: "Action" },
   ];
+
+  // Function to handle navigation with scroll to top
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <section id="games" className="section-padding bg-navy-900">
@@ -44,10 +52,11 @@ const FeaturedGames = () => {
               Stay updated with the latest developments, tournaments, and announcements from the world of esports
             </p>
           </div>
-          <Button asChild className="mt-4 md:mt-0 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10">
-            <Link to="#news">
-              View All News <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+          <Button 
+            className="mt-4 md:mt-0 bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500/10"
+            onClick={() => handleNavigation("/news")}
+          >
+            View All News <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
 

@@ -8,9 +8,11 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
+  
   const sections = [
     // Removed the "live-updates" section
     {
@@ -42,6 +44,12 @@ const Index = () => {
     }
   ];
 
+  // Function to handle navigation with scroll to top
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className="min-h-screen bg-navy-950 text-white w-full overflow-x-hidden">
       <Navbar />
@@ -58,16 +66,14 @@ const Index = () => {
             color={section.color}
           >
             <Button 
-              asChild
               className={`mt-4 px-4 md:px-6 py-2 md:py-2.5 ${
                 section.color === "blue" ? "bg-blue-500 hover:bg-blue-600" : 
                 section.color === "green" ? "bg-emerald-500 hover:bg-emerald-600" : 
                 "bg-purple-500 hover:bg-purple-600"
               }`}
+              onClick={() => handleNavigation(section.link)}
             >
-              <Link to={section.link}>
-                {section.buttonText} <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              {section.buttonText} <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </OverviewSection>
         ))}
