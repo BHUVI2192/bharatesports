@@ -13,6 +13,15 @@ import { Link } from 'react-router-dom';
 const Index = () => {
   const sections = [
     {
+      id: "live-updates",
+      title: "LIVE UPDATES",
+      description: "Get real-time esports content including news feeds, upcoming matches, and the latest videos from the Indian esports scene.",
+      image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2942&auto=format&fit=crop",
+      buttonText: "Check Updates",
+      link: "/live-updates",
+      color: "blue"
+    },
+    {
       id: "news",
       title: "LATEST NEWS",
       description: "Stay updated with the latest developments, tournaments, and announcements from the world of esports in India and beyond.",

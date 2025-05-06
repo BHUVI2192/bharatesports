@@ -39,6 +39,7 @@ const Navbar = () => {
   // Navigation links
   const navItems = [
     { path: "/", label: "Home" },
+    { path: "/live-updates", label: "Live Updates" },
     { path: "/news", label: "News" },
     { path: "/accessories", label: "Accessories" },
     { path: "/about", label: "About" },
