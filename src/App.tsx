@@ -10,7 +10,6 @@ import NotFound from "./pages/NotFound";
 import NewsPage from "./pages/NewsPage";
 import AccessoriesPage from "./pages/AccessoriesPage";
 import AboutPage from "./pages/AboutPage";
-import LiveUpdatesPage from "./pages/LiveUpdatesPage";
 
 const queryClient = new QueryClient();
 
@@ -22,7 +21,6 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/live-updates" element={<LiveUpdatesPage />} />
           <Route path="/news/:id" element={<NewsDetail />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/accessories" element={<AccessoriesPage />} />
