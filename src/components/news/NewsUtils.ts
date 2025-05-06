@@ -17,12 +17,12 @@ export const scheduleNextUpdate = (fetchAllContent: () => Promise<void>) => {
   
   const timeUntilUpdate = nextUpdate.getTime() - now.getTime();
   
-  // Schedule the next update
+  // Schedule the next update for YouTube videos
   setTimeout(() => {
     fetchAllContent();
     // After updating, schedule the next one for tomorrow
     scheduleNextUpdate(fetchAllContent);
   }, timeUntilUpdate);
   
-  console.log(`Next content update scheduled for: ${nextUpdate.toLocaleString()}`);
+  console.log(`Next YouTube videos update scheduled for: ${nextUpdate.toLocaleString()}`);
 };

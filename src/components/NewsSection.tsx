@@ -1,20 +1,13 @@
-
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDeviceType } from '@/hooks/use-mobile';
 import { 
-  fetchRSSFeed, 
-  fetchTalkEsport, 
-  fetchEsportsMatches, 
   fetchYoutubeVideos 
 } from '@/services/api';
 
 // Import new component modules
 import SearchBar from './news/SearchBar';
 import ArticleList from './news/ArticleList';
-import RssFeedContent from './news/RssFeedContent';
-import TalkEsportContent from './news/TalkEsportContent';
-import MatchesContent from './news/MatchesContent';
 import VideosContent from './news/VideosContent';
 import { allNewsArticles, popularSearches } from './news/NewsData';
 import { scheduleNextUpdate } from './news/NewsUtils';
@@ -26,51 +19,15 @@ const NewsSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   
-  // Add states for integrated content
-  const [rssFeedItems, setRssFeedItems] = useState([]);
-  const [talkEsportItems, setTalkEsportItems] = useState([]);
-  const [esportsMatches, setEsportsMatches] = useState([]);
+  // Only keep the YouTube videos state
   const [youtubeVideos, setYoutubeVideos] = useState([]);
-  const [isLoadingRSS, setIsLoadingRSS] = useState(true);
-  const [isLoadingTalkEsport, setIsLoadingTalkEsport] = useState(true);
-  const [isLoadingMatches, setIsLoadingMatches] = useState(true);
   const [isLoadingVideos, setIsLoadingVideos] = useState(true);
   
   const deviceType = useDeviceType();
   const isMobile = deviceType === 'mobile';
 
-  // Function to fetch all external content
+  // Function to fetch only YouTube videos content
   const fetchAllContent = async () => {
-    try {
-      setIsLoadingRSS(true);
-      const rssData = await fetchRSSFeed();
-      setRssFeedItems(rssData);
-      setIsLoadingRSS(false);
-    } catch (error) {
-      console.error('Error fetching RSS feed:', error);
-      setIsLoadingRSS(false);
-    }
-    
-    try {
-      setIsLoadingTalkEsport(true);
-      const talkEsportData = await fetchTalkEsport();
-      setTalkEsportItems(talkEsportData);
-      setIsLoadingTalkEsport(false);
-    } catch (error) {
-      console.error('Error fetching TalkEsport:', error);
-      setIsLoadingTalkEsport(false);
-    }
-    
-    try {
-      setIsLoadingMatches(true);
-      const matchesData = await fetchEsportsMatches();
-      setEsportsMatches(matchesData);
-      setIsLoadingMatches(false);
-    } catch (error) {
-      console.error('Error fetching esports matches:', error);
-      setIsLoadingMatches(false);
-    }
-    
     try {
       setIsLoadingVideos(true);
       const videosData = await fetchYoutubeVideos();
@@ -150,9 +107,6 @@ const NewsSection = () => {
         <Tabs defaultValue="articles" className="w-full mb-8">
           <TabsList className={`${isMobile ? 'w-full overflow-x-auto' : 'w-fit'} bg-navy-900 mb-6`}>
             <TabsTrigger value="articles" className="text-sm md:text-base">Articles</TabsTrigger>
-            <TabsTrigger value="rss" className="text-sm md:text-base">Gaming News</TabsTrigger>
-            <TabsTrigger value="talkesport" className="text-sm md:text-base">Headlines</TabsTrigger>
-            <TabsTrigger value="matches" className="text-sm md:text-base">Tournaments</TabsTrigger>
             <TabsTrigger value="videos" className="text-sm md:text-base">Videos</TabsTrigger>
           </TabsList>
           
@@ -163,27 +117,6 @@ const NewsSection = () => {
               setCurrentPage={setCurrentPage}
               itemsPerPage={itemsPerPage}
               onViewAllNews={handleViewAllNews}
-            />
-          </TabsContent>
-          
-          <TabsContent value="rss" className="mt-0">
-            <RssFeedContent 
-              isLoading={isLoadingRSS}
-              feedItems={rssFeedItems}
-            />
-          </TabsContent>
-          
-          <TabsContent value="talkesport" className="mt-0">
-            <TalkEsportContent 
-              isLoading={isLoadingTalkEsport}
-              articles={talkEsportItems}
-            />
-          </TabsContent>
-          
-          <TabsContent value="matches" className="mt-0">
-            <MatchesContent 
-              isLoading={isLoadingMatches}
-              matches={esportsMatches}
             />
           </TabsContent>
           
