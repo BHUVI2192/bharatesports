@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 // Game card component
-const GameCard = ({ title, category }: { title: string; category: string }) => {
+const GameCard = ({ title, category, excerpt }: { title: string; category: string; excerpt: string }) => {
   return (
     <div className="group">
       <div className="relative rounded-lg overflow-hidden transition-all duration-300 transform group-hover:scale-105 border border-navy-700 shadow-soft">
@@ -14,6 +14,7 @@ const GameCard = ({ title, category }: { title: string; category: string }) => {
           <div className="absolute bottom-0 left-0 right-0 p-4">
             <span className="text-blue-400 text-xs uppercase tracking-wider font-medium">{category}</span>
             <h3 className="text-white text-lg font-bold mt-1">{title}</h3>
+            <p className="text-gray-400 text-sm mt-2 line-clamp-2">{excerpt}</p>
           </div>
         </div>
       </div>
@@ -24,16 +25,25 @@ const GameCard = ({ title, category }: { title: string; category: string }) => {
 const FeaturedGames = () => {
   const navigate = useNavigate();
   
-  const games = [
-    { id: 1, title: "Speed Racer", category: "Racing" },
-    { id: 2, title: "Tactical Strike", category: "FPS" },
-    { id: 3, title: "Fantasy Quest", category: "RPG" },
-    { id: 4, title: "Adventure Valley", category: "Adventure" },
-    { id: 5, title: "Mind Maze", category: "Puzzle" },
-    { id: 6, title: "Combat Zone", category: "Action" },
-    { id: 7, title: "Cosmic Explorers", category: "Space Sim" },
-    { id: 8, title: "Battle Royale Masters", category: "Battle Royale" },
-    { id: 9, title: "Strategy Legends", category: "Strategy" }
+  const featuredNews = [
+    { 
+      id: 1, 
+      title: "Bharat Esport Express Announces Major Tournament", 
+      category: "Tournament", 
+      excerpt: "Registration opens for our largest tournament yet with a ₹50 lakh prize pool." 
+    },
+    { 
+      id: 2, 
+      title: "New Gaming Center Opens in Bengaluru", 
+      category: "Facilities", 
+      excerpt: "State-of-the-art facility features 50+ gaming stations and a mini-arena." 
+    },
+    { 
+      id: 3, 
+      title: "Women in Gaming Initiative Gains Momentum", 
+      category: "Community", 
+      excerpt: "Special tournament series designed to encourage more women in competitive gaming." 
+    }
   ];
 
   // Function to handle navigation with scroll to top
@@ -63,12 +73,13 @@ const FeaturedGames = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-          {games.slice(0, 3).map((game) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {featuredNews.map((news) => (
             <GameCard
-              key={game.id}
-              title={game.title}
-              category={game.category}
+              key={news.id}
+              title={news.title}
+              category={news.category}
+              excerpt={news.excerpt}
             />
           ))}
         </div>

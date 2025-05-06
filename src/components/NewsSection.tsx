@@ -1,15 +1,13 @@
+
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDeviceType } from '@/hooks/use-mobile';
-import { 
-  fetchYoutubeVideos 
-} from '@/services/api';
 
 // Import new component modules
 import SearchBar from './news/SearchBar';
 import ArticleList from './news/ArticleList';
 import VideosContent from './news/VideosContent';
-import { allNewsArticles, popularSearches } from './news/NewsData';
+import { allNewsArticles, popularSearches, staticVideos } from './news/NewsData';
 import { scheduleNextUpdate } from './news/NewsUtils';
 
 const NewsSection = () => {
@@ -19,37 +17,20 @@ const NewsSection = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   
-  // Only keep the YouTube videos state
-  const [youtubeVideos, setYoutubeVideos] = useState([]);
+  // Loading state for visual consistency
   const [isLoadingVideos, setIsLoadingVideos] = useState(true);
   
   const deviceType = useDeviceType();
   const isMobile = deviceType === 'mobile';
 
-  // Function to fetch only YouTube videos content
-  const fetchAllContent = async () => {
-    try {
-      setIsLoadingVideos(true);
-      const videosData = await fetchYoutubeVideos();
-      setYoutubeVideos(videosData);
-      setIsLoadingVideos(false);
-    } catch (error) {
-      console.error('Error fetching YouTube videos:', error);
-      setIsLoadingVideos(false);
-    }
-  };
-
-  // Initial fetch on component mount and schedule updates
+  // Simulate loading of videos
   useEffect(() => {
-    fetchAllContent();
-    scheduleNextUpdate(fetchAllContent);
+    // Brief timeout to simulate loading
+    const timer = setTimeout(() => {
+      setIsLoadingVideos(false);
+    }, 1000);
     
-    // Clean up the scheduler when component unmounts
-    return () => {
-      // Clear any active timeouts
-      // This is a simplified cleanup - in a real app with a backend,
-      // you'd need a more robust solution
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -123,7 +104,7 @@ const NewsSection = () => {
           <TabsContent value="videos" className="mt-0">
             <VideosContent 
               isLoading={isLoadingVideos}
-              videos={youtubeVideos}
+              videos={staticVideos}
             />
           </TabsContent>
         </Tabs>

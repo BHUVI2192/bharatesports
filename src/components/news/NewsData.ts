@@ -1,3 +1,4 @@
+
 // News articles data
 export const allNewsArticles = [
   {
@@ -118,4 +119,58 @@ export const popularSearches = [
   "Game Releases",
   "Patch Notes",
   "Team Transfers"
+];
+
+// Static video content to replace YouTube API
+export const staticVideos = [
+  {
+    id: { videoId: "video1" },
+    snippet: {
+      title: "Top Plays from BGMI Masters Series Season 2",
+      channelTitle: "Indian Esports Channel",
+      thumbnails: {
+        high: { url: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=2940&auto=format&fit=crop" }
+      }
+    }
+  },
+  {
+    id: { videoId: "video2" },
+    snippet: {
+      title: "Indian Valorant Teams Going Global - Analysis",
+      channelTitle: "Esports Analyst",
+      thumbnails: {
+        high: { url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop" }
+      }
+    }
+  },
+  {
+    id: { videoId: "video3" },
+    snippet: {
+      title: "Next Level Gaming: Behind the Scenes with Team India",
+      channelTitle: "Gaming Spotlight",
+      thumbnails: {
+        high: { url: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2940&auto=format&fit=crop" }
+      }
+    }
+  },
+  {
+    id: { videoId: "video4" },
+    snippet: {
+      title: "BGMI Tournament Highlights - May 2025",
+      channelTitle: "Mobile Esports",
+      thumbnails: {
+        high: { url: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=2940&auto=format&fit=crop" }
+      }
+    }
+  },
+  {
+    id: { videoId: "video5" },
+    snippet: {
+      title: "Indian Gaming Industry: Current State and Future Prospects",
+      channelTitle: "Tech Insights",
+      thumbnails: {
+        high: { url: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2940&auto=format&fit=crop" }
+      }
+    }
+  }
 ];
