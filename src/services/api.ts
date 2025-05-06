@@ -14,7 +14,44 @@ export const fetchRSSFeed = async () => {
     return response.data.items;
   } catch (error) {
     console.error('Error fetching RSS feed:', error);
-    return [];
+    // Return mock data if API call fails
+    return [
+      {
+        title: "BGMI: How to Get Free Desert Fossil M16A4",
+        pubDate: "2025-05-05 10:30:00",
+        link: "https://www.example.com/bgmi-fossil",
+        thumbnail: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=2940&auto=format&fit=crop",
+        description: "Learn how to obtain the exclusive Desert Fossil M16A4 skin in BGMI without spending any UC."
+      },
+      {
+        title: "Valorant: Team India Qualifies for Asian Championship",
+        pubDate: "2025-05-04 15:45:00",
+        link: "https://www.example.com/valorant-india",
+        thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop",
+        description: "Indian Valorant team secures a spot in the upcoming Asian Championship after defeating top regional teams."
+      },
+      {
+        title: "New Gaming Cafe Chain Launching Across India",
+        pubDate: "2025-05-03 09:15:00",
+        link: "https://www.example.com/gaming-cafes",
+        thumbnail: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2940&auto=format&fit=crop",
+        description: "A new chain of high-end gaming cafes is set to open in 10 major Indian cities by the end of the year."
+      },
+      {
+        title: "Mobile Gaming Tournament Announces ₹50 Lakh Prize Pool",
+        pubDate: "2025-05-02 14:20:00",
+        link: "https://www.example.com/mobile-tournament",
+        thumbnail: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=2940&auto=format&fit=crop",
+        description: "The largest mobile gaming tournament in India announces a record-breaking prize pool for its upcoming season."
+      },
+      {
+        title: "Indian Game Developer Secures Major International Investment",
+        pubDate: "2025-05-01 11:10:00",
+        link: "https://www.example.com/game-developer",
+        thumbnail: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2940&auto=format&fit=crop",
+        description: "A Mumbai-based game studio has secured $15 million in funding from international investors for its upcoming RPG."
+      }
+    ];
   }
 };
 
@@ -44,7 +81,29 @@ export const fetchTalkEsport = async () => {
     return articles;
   } catch (error) {
     console.error('Error fetching TalkEsport content:', error);
-    return [];
+    // Return mock data if API call fails
+    return [
+      {
+        title: "Velocity Gaming secures top spot in Valorant Champions Tour South Asia",
+        link: "https://www.example.com/velocity-gaming"
+      },
+      {
+        title: "ESL Play announces new CSGO tournament with Indian qualifiers",
+        link: "https://www.example.com/esl-tournament"
+      },
+      {
+        title: "Indian PUBG Mobile players form new organization after game's return",
+        link: "https://www.example.com/pubg-return"
+      },
+      {
+        title: "Mumbai to host major LAN event featuring Dota 2 and Valorant",
+        link: "https://www.example.com/mumbai-lan"
+      },
+      {
+        title: "Indian esports organization announces expansion into Southeast Asian market",
+        link: "https://www.example.com/expansion-sea"
+      }
+    ];
   }
 };
 
@@ -68,7 +127,54 @@ export const fetchEsportsMatches = async () => {
     return response.data;
   } catch (error) {
     console.error('Error fetching Pandascore matches:', error);
-    return [];
+    // Return mock data if API call fails
+    return [
+      {
+        name: "TSM vs Cloud9",
+        begin_at: "2025-05-10T14:00:00Z",
+        videogame: { name: "League of Legends" },
+        opponents: [
+          { opponent: { name: "TSM" } },
+          { opponent: { name: "Cloud9" } }
+        ]
+      },
+      {
+        name: "Velocity Gaming vs Global Esports",
+        begin_at: "2025-05-11T12:30:00Z",
+        videogame: { name: "Valorant" },
+        opponents: [
+          { opponent: { name: "Velocity Gaming" } },
+          { opponent: { name: "Global Esports" } }
+        ]
+      },
+      {
+        name: "Fnatic vs Team Secret",
+        begin_at: "2025-05-12T16:00:00Z",
+        videogame: { name: "CS:GO" },
+        opponents: [
+          { opponent: { name: "Fnatic" } },
+          { opponent: { name: "Team Secret" } }
+        ]
+      },
+      {
+        name: "Team Vitality vs Natus Vincere",
+        begin_at: "2025-05-13T15:00:00Z",
+        videogame: { name: "Dota 2" },
+        opponents: [
+          { opponent: { name: "Team Vitality" } },
+          { opponent: { name: "Natus Vincere" } }
+        ]
+      },
+      {
+        name: "Soul vs GodLike Esports",
+        begin_at: "2025-05-14T13:00:00Z",
+        videogame: { name: "BGMI" },
+        opponents: [
+          { opponent: { name: "Soul" } },
+          { opponent: { name: "GodLike Esports" } }
+        ]
+      }
+    ];
   }
 };
 
@@ -93,6 +199,58 @@ export const fetchYoutubeVideos = async () => {
     return response.data.items;
   } catch (error) {
     console.error('Error fetching YouTube videos:', error);
-    return [];
+    // Return mock data if API call fails
+    return [
+      {
+        id: { videoId: "video1" },
+        snippet: {
+          title: "Top Plays from BGMI Masters Series Season 2",
+          channelTitle: "Indian Esports Channel",
+          thumbnails: {
+            high: { url: "https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=2940&auto=format&fit=crop" }
+          }
+        }
+      },
+      {
+        id: { videoId: "video2" },
+        snippet: {
+          title: "Indian Valorant Teams Going Global - Analysis",
+          channelTitle: "Esports Analyst",
+          thumbnails: {
+            high: { url: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2940&auto=format&fit=crop" }
+          }
+        }
+      },
+      {
+        id: { videoId: "video3" },
+        snippet: {
+          title: "Next Level Gaming: Behind the Scenes with Team India",
+          channelTitle: "Gaming Spotlight",
+          thumbnails: {
+            high: { url: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2940&auto=format&fit=crop" }
+          }
+        }
+      },
+      {
+        id: { videoId: "video4" },
+        snippet: {
+          title: "BGMI Tournament Highlights - May 2025",
+          channelTitle: "Mobile Esports",
+          thumbnails: {
+            high: { url: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=2940&auto=format&fit=crop" }
+          }
+        }
+      },
+      {
+        id: { videoId: "video5" },
+        snippet: {
+          title: "Indian Gaming Industry: Current State and Future Prospects",
+          channelTitle: "Tech Insights",
+          thumbnails: {
+            high: { url: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2940&auto=format&fit=crop" }
+          }
+        }
+      }
+    ];
   }
 };
