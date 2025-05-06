@@ -1,4 +1,3 @@
-
 // News articles data
 export const allNewsArticles = [
   {
@@ -110,13 +109,13 @@ export const allNewsArticles = [
   }
 ];
 
-// Updated popular searches
+// Updated popular searches focused on gaming news
 export const popularSearches = [
-  "BGMI Tournaments", 
-  "Esports Scholarships", 
-  "Gaming Laptops", 
-  "PC Components", 
-  "Mobile Gaming",
-  "VR Gaming",
-  "Women in Esports"
+  "Esports Tournaments", 
+  "Game Updates", 
+  "Pro Player News", 
+  "Gaming Events", 
+  "Game Releases",
+  "Patch Notes",
+  "Team Transfers"
 ];
