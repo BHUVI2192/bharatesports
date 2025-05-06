@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -256,6 +255,55 @@ const accessories = [
       "Interchangeable Side Plates",
       "5 Onboard Profiles"
     ]
+  },
+  // New accessories added
+  {
+    id: 16,
+    title: "Premium Gaming Chair",
+    description: "Ergonomic design for long gaming sessions",
+    price: "₹18,999",
+    icon: Monitor, // Using Monitor icon as placeholder
+    link: "https://www.amazon.in",
+    category: "chairs",
+    features: [
+      "4D Adjustable Armrests",
+      "180° Recline",
+      "Lumbar Support Cushion",
+      "Premium PU Leather",
+      "High-Density Foam Padding"
+    ]
+  },
+  {
+    id: 17,
+    title: "RGB Gaming Desk",
+    description: "Spacious desk with built-in RGB lighting",
+    price: "₹14,999",
+    icon: Monitor, // Using Monitor icon as placeholder
+    link: "https://www.flipkart.com",
+    category: "furniture",
+    features: [
+      "Carbon Fiber Texture Surface",
+      "Programmable RGB Edge Lighting",
+      "Cable Management System",
+      "Headphone Hook",
+      "Cup Holder"
+    ]
+  },
+  {
+    id: 18,
+    title: "Streaming Microphone",
+    description: "Studio-quality audio for streaming and content creation",
+    price: "₹8,999",
+    icon: Headphones, // Using Headphones icon as placeholder
+    link: "https://www.amazon.in",
+    category: "audio",
+    features: [
+      "Cardioid Polar Pattern",
+      "24-bit/96kHz Resolution",
+      "Zero-Latency Monitoring",
+      "RGB Lighting",
+      "Shock Mount Included"
+    ]
   }
 ];
 
@@ -265,7 +313,10 @@ const categories = [
   { value: "keyboards", label: "Keyboards" },
   { value: "controllers", label: "Controllers" },
   { value: "monitors", label: "Monitors" },
-  { value: "mice", label: "Mice" }
+  { value: "mice", label: "Mice" },
+  { value: "chairs", label: "Chairs" },
+  { value: "furniture", label: "Furniture" },
+  { value: "audio", label: "Audio" }
 ];
 
 const AccessoriesPage = () => {

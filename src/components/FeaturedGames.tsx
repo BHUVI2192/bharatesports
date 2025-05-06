@@ -31,6 +31,9 @@ const FeaturedGames = () => {
     { id: 4, title: "Adventure Valley", category: "Adventure" },
     { id: 5, title: "Mind Maze", category: "Puzzle" },
     { id: 6, title: "Combat Zone", category: "Action" },
+    { id: 7, title: "Cosmic Explorers", category: "Space Sim" },
+    { id: 8, title: "Battle Royale Masters", category: "Battle Royale" },
+    { id: 9, title: "Strategy Legends", category: "Strategy" }
   ];
 
   // Function to handle navigation with scroll to top
